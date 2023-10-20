@@ -51,7 +51,7 @@ def ackley2(z1, z2, a=20, b=0.2, c=2*np.pi):
     """
     Defines the Ackley function in 2D. This is a pathological function
     that looks like a bunch of hills and valleys in a grid pattern (at 
-    least for n=2). 
+    least for n=2) but it is different from the Rastrigin function.
 
     https://en.wikipedia.org/wiki/Ackley_function
 
@@ -85,3 +85,83 @@ def plot_ackley2(x, y):
     return -20 * np.exp(-0.2*np.sqrt(0.5*(x**2 + y**2))) - np.exp(0.5*(np.cos(2*np.pi*x) 
                + np.cos(2*np.pi*y))) + np.e + 20
 
+def sphere2(x, y):
+    """
+    Defines the Sphere function in 2D. 
+
+    https://en.wikipedia.org/wiki/Test_functions_for_optimization
+
+    Parameters:
+        x, y: Variables
+
+    Returns:
+        The value of the Sphere function at the given point.    
+    """
+    return x**2 + y**2
+
+def plot_sphere2(x, y):
+    """
+    Defines the Sphere function in 2D, but in a way that is easier to
+    plot. The reason why this is necessary is because the Sphere function
+    is not convex and thus cannot be used in Gurobi. So we need to linearize
+    it.
+
+    https://en.wikipedia.org/wiki/Test_functions_for_optimization
+
+    Parameters:
+        x, y: Variables
+
+    Returns:
+        The value of the Sphere function at the given point.    
+    """
+    return x**2 + y**2
+
+def rosenbrock2(x, y, v, a=1, b=100):
+    """
+    Defines the Rosenbrock function in 2D. 
+
+    https://en.wikipedia.org/wiki/Rosenbrock_function
+
+    Parameters:
+        x, y: Variables
+        v: Auxiliary variable such that v = x**2
+        a, b: Constants
+
+    Returns:
+        The value of the Rosenbrock function at the given point.    
+    """
+    return (a - x)**2 + b*(y - v)**2
+
+def rosenbrock2_plot(x, y, a=1, b=100):
+    """
+    Defines the Rosenbrock function in 2D, but in a way that is easier to
+    plot. The reason why this is necessary is because the Rosenbrock function
+    is not convex and thus cannot be used in Gurobi. So we need to linearize
+    it.
+
+    https://en.wikipedia.org/wiki/Rosenbrock_function
+
+    Parameters:
+        x, y: Variables
+        a, b: Constants
+
+    Returns:
+        The value of the Rosenbrock function at the given point.
+    """
+    return (a - x)**2 + b*(y - x**2)**2
+
+
+def bukinN62(z1, z2):
+    """
+    Defines the Bukin function N. 6 in 2D.
+
+    https://en.wikipedia.org/wiki/Test_functions_for_optimization
+
+    Parameters:
+        z1: Auxiliary variable such that z1 = |y - 0.01*x**2|
+        z2: Auxiliary variable such that z2 = |x + 10|
+    
+    Returns:
+        The value of the Bukin function N. 6 at the given point.
+    """
+    return 100*np.sqrt(z1) + 0.01*z2
