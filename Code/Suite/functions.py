@@ -324,3 +324,152 @@ def plot_cross_in_tray2(x, y):
         The value of the Cross-in-tray function at the given point.
     """
     return -0.0001*(np.abs(np.sin(x)*np.sin(y)*np.exp(np.abs(100 - np.sqrt(x**2 + y**2)/np.pi))) + 1)**0.1
+
+
+def eggholder2(x, y, z1, z2):
+    """
+    Defines the Eggholder function in 2D. Which has a global minima at
+    (512, 404.2319) and is like a crisscross pattern.
+
+        f(x, y) = f(512, 404.2319) = -959.6407
+
+    More information can be found here:
+        https://en.wikipedia.org/wiki/Test_functions_for_optimization
+
+    Parameters:
+        x, y: Variables
+        z1: Auxiliary variable such that z1 = sin(sqrt(|x/2 + (y + 47)|))
+        z2: Auxiliary variable such that z2 = sin(sqrt(|x - (y + 47)|))
+    
+    Returns:
+        The value of the Eggholder function at the given point.
+    """
+    return -(y + 47)*z1 - x*z2
+
+
+def plot_eggholder2(x, y):
+    """
+    Defines the Eggholder function in 2D, but in a way that is easier to
+    plot. The reason why this is necessary is because the Eggholder function
+    is not convex and thus cannot be used in Gurobi. So we need to linearize
+    it.
+
+    https://en.wikipedia.org/wiki/Test_functions_for_optimization
+
+    Parameters:
+        x, y: Variables
+    
+    Returns:
+        The value of the Eggholder function at the given point.
+    """
+    return -(y + 47)*np.sin(np.sqrt(np.abs(x/2 + (y + 47)))) - x*np.sin(np.sqrt(np.abs(x - (y + 47))))
+
+
+def holder_table2(w):
+    """
+    Defines the Holder table function in 2D. Which has a global minima at
+    (8.05502, 9.66459) and is shaped like a picnic blanket or a table cloth.
+
+        f(x, y) = f(8.05502, 9.66459) = -19.2085
+    
+    More information can be found here:
+        https://en.wikipedia.org/wiki/Test_functions_for_optimization
+
+    Parameters:
+        w: Auxiliary variable such that 
+            w = -|sin(x)*cos(y)*exp(|1 - sqrt(x**2 + y**2)/pi)|
+
+    Returns:
+        The value of the Holder table function at the given point.
+    """
+
+def plot_holder_table2(x, y):
+    """
+    Defines the Holder table function in 2D, but in a way that is easier to
+    plot. The reason why this is necessary is because the Holder table function
+    is not convex and thus cannot be used in Gurobi. So we need to linearize
+    it.
+
+    https://en.wikipedia.org/wiki/Test_functions_for_optimization
+
+    Parameters:
+        x, y: Variables
+    
+    Returns:
+        The value of the Holder table function at the given point.
+    """
+    return -np.abs(np.sin(x)*np.cos(y)*np.exp(np.abs(1 - np.sqrt(x**2 + y**2)/np.pi)))
+
+
+def schafferN22(w1, w2):
+    """
+    Defines the Schaffer function N. 2 in 2D. Which has a global minima at
+    (0, 0) and is shaped like a bunch of dots in a grid pattern.
+
+        f(x, y) = f(0, 0) = 0
+
+    More information can be found here:
+        https://en.wikipedia.org/wiki/Test_functions_for_optimization
+    
+    Parameters:
+        w1: Auxiliary variable such that w1 = sin(x**2 - y**2)**2
+        w2: Auxiliary variable such that w2 = 1/(1 + 0.001*(x**2 + y**2))**2
+    """
+    return 0.5 + (w1 - 0.5)/(w2)
+
+
+def plot_schafferN22(x, y):
+    """
+    Defines the Schaffer function N. 2 in 2D, but in a way that is easier to
+    plot. The reason why this is necessary is because the Schaffer function N. 2
+    is not convex and thus cannot be used in Gurobi. So we need to linearize
+    it.
+
+    https://en.wikipedia.org/wiki/Test_functions_for_optimization
+    
+    Parameters:
+        x, y: Variables
+    
+    Returns:
+        The value of the Schaffer function N. 2 at the given point.
+    """
+    return 0.5 + (np.sin(x**2 - y**2) - 0.5)/(1 + 0.001*(x**2 + y**2))**2
+
+
+def schafferN42(w1, w2):
+    """
+    Defines the Schaffer function N. 4 in 2D. Which has a global minima at
+    (0, 1.25313) and is shaped like a bunch of dots in a grid pattern.
+
+        f(x, y) = f(0, 1.25313) = f(0, -1.25313) = f(1.25313, 0) = f(-1.25313, 0) 
+            = 0.292579
+
+        1.253131828792882 -> Coordinate 
+        0.292578632035980 -> Value
+
+    More information can be found here:
+        https://en.wikipedia.org/wiki/Test_functions_for_optimization
+    
+    Parameters:
+        w1: Auxiliary variable such that w1 = cos(sin(x**2 - y**2))**2
+        w2: Auxiliary variable such that w2 = 1/(1 + 0.001*(x**2 + y**2))**2
+    """
+    return 0.5 + (w1 - 0.5)/(w2)
+
+
+def plot_schafferN42(x, y):
+    """
+    Defines the Schaffer function N. 4 in 2D, but in a way that is easier to
+    plot. The reason why this is necessary is because the Schaffer function N. 4
+    is not convex and thus cannot be used in Gurobi. So we need to linearize
+    it.
+
+    https://en.wikipedia.org/wiki/Test_functions_for_optimization
+    
+    Parameters:
+        x, y: Variables
+    
+    Returns:
+        The value of the Schaffer function N. 4 at the given point.
+    """
+    return 0.5 + (np.cos(np.sin(x**2 - y**2))**2 - 0.5)/(1 + 0.001*(x**2 + y**2))**2
