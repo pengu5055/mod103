@@ -85,6 +85,7 @@ def plot_ackley2(x, y):
     return -20 * np.exp(-0.2*np.sqrt(0.5*(x**2 + y**2))) - np.exp(0.5*(np.cos(2*np.pi*x) 
                + np.cos(2*np.pi*y))) + np.e + 20
 
+
 def sphere2(x, y):
     """
     Defines the Sphere function in 2D. 
@@ -98,6 +99,7 @@ def sphere2(x, y):
         The value of the Sphere function at the given point.    
     """
     return x**2 + y**2
+
 
 def plot_sphere2(x, y):
     """
@@ -116,6 +118,7 @@ def plot_sphere2(x, y):
     """
     return x**2 + y**2
 
+
 def rosenbrock2(x, y, v, a=1, b=100):
     """
     Defines the Rosenbrock function in 2D. 
@@ -131,6 +134,7 @@ def rosenbrock2(x, y, v, a=1, b=100):
         The value of the Rosenbrock function at the given point.    
     """
     return (a - x)**2 + b*(y - v)**2
+
 
 def rosenbrock2_plot(x, y, a=1, b=100):
     """
@@ -153,9 +157,19 @@ def rosenbrock2_plot(x, y, a=1, b=100):
 
 def bukinN62(z1, z2):
     """
-    Defines the Bukin function N. 6 in 2D.
+    Defines the Bukin function N. 6 in 2D. Which has a global minimum at
+    (-10, 1) and is shaped like a valley with a steep cliff on the left
+    side.
 
-    https://en.wikipedia.org/wiki/Test_functions_for_optimization
+        f(x, y) = f(-10, 1) = 0
+
+    The variables z1 and z2 are auxiliary variables that are defined as:
+
+        z1 = |y - 0.01*x**2|
+        z2 = |x + 10|
+
+    More information can be found here:
+        https://en.wikipedia.org/wiki/Test_functions_for_optimization
 
     Parameters:
         z1: Auxiliary variable such that z1 = |y - 0.01*x**2|
@@ -165,3 +179,148 @@ def bukinN62(z1, z2):
         The value of the Bukin function N. 6 at the given point.
     """
     return 100*np.sqrt(z1) + 0.01*z2
+
+
+def plot_bukinN62(x, y):
+    """
+    Defines the Bukin function N. 6 in 2D, but in a way that is easier to
+    plot. The reason why this is necessary is because the Bukin function N. 6
+    is not convex and thus cannot be used in Gurobi. So we need to linearize
+    it.
+
+    https://en.wikipedia.org/wiki/Test_functions_for_optimization
+
+    Parameters:
+        x, y: Variables
+
+    Returns:
+        The value of the Bukin function N. 6 at the given point.
+    """
+    return 100*np.sqrt(np.abs(y - 0.01*x**2)) + 0.01*np.abs(x + 10)
+
+
+def leviN132(z1, z2, z3, z4, z5):
+    """
+    Defines the Levi function N. 13 in 2D. Which has a global minimum at
+    (1, 1) and is shaped like a ribbed bowl.
+
+        f(x, y) = f(1, 1) = 0
+
+    More information can be found here:
+        https://en.wikipedia.org/wiki/Test_functions_for_optimization
+
+    Parameters:
+        z1: Auxiliary variable such that z1 = np.sin(3*np.pi*x)**2
+        z2: Auxiliary variable such that z2 = np.sin(3*np.pi*y)**2
+        z3: Auxiliary variable such that z3 = np.sin(2*np.pi*y)**2
+        z4: Auxiliary variable such that z4 = (x - 1)**2
+        z5: Auxiliary variable such that z5 = (y - 1)**2
+
+    """
+    return z1 + z4 * (1 + z2) + z5 * (1 + z3)
+
+
+def plot_leviN132(x, y):
+    """
+    Defines the Levi function N. 13 in 2D, but in a way that is easier to
+    plot. The reason why this is necessary is because the Levi function N. 13
+    is not convex and thus cannot be used in Gurobi. So we need to linearize
+    it.
+
+    https://en.wikipedia.org/wiki/Test_functions_for_optimization
+
+    Parameters:
+        x, y: Variables
+    
+    Returns:
+        The value of the Levi function N. 13 at the given point.
+    """
+    return np.sin(3*np.pi*x)**2 + (x - 1)**2 * (1 + np.sin(3*np.pi*y)**2) + \
+              (y - 1)**2 * (1 + np.sin(2*np.pi*y)**2)
+
+
+def himmelblau2(x1, x2, v1, v2):
+    """
+    Defines the Himmelblau function in 2D. Which has four global minima at
+    (3, 2), (-2.805118, 3.131312), (-3.779310, -3.283186), (3.584428, -1.848126)
+    and is shaped like a bowl with four holes in it. This function is
+    particularly interesting because it has multiple local minima ie. it is
+    multi-modal.
+
+        f(x, y) = f(3, 2) = f(-2.805118, 3.131312) = f(-3.779310, -3.283186) = 
+                  f(3.584428, -1.848126) = 0
+
+    More information can be found here:
+        https://en.wikipedia.org/wiki/Himmelblau%27s_function
+
+    Parameters:
+        x1, x1: Variables
+        v1: Auxiliary variable such that v1 = x**2
+        v2: Auxiliary variable such that v2 = y**2
+    
+    Returns:
+        The value of the Himmelblau function at the given point.
+    """
+    return (v1 + x2 - 11)**2 + (x1 + v2 - 7)**2
+
+
+def plot_himmelblau2(x, y):
+    """
+    Defines the Himmelblau function in 2D, but in a way that is easier to
+    plot. The reason why this is necessary is because the Himmelblau function
+    is not convex and thus cannot be used in Gurobi. So we need to linearize
+    it.
+
+    https://en.wikipedia.org/wiki/Himmelblau%27s_function
+
+    Parameters:
+        x, y: Variables
+    
+    Returns:
+        The value of the Himmelblau function at the given point.
+    """
+    return (x**2 + y - 11)**2 + (x + y**2 - 7)**2
+
+
+def cross_in_tray2(w):
+    """
+    Defines the Cross-in-tray function in 2D. Which has four global minima at
+    (1.34941, -1.34941), (1.34941, 1.34941), (-1.34941, 1.34941), (-1.34941, -1.34941)
+    and is shaped like a bowl with four holes in it. This function is
+    particularly interesting because it has multiple local minima ie. it is
+    multi-modal.
+
+        f(x, y) = f(1.34941, -1.34941) = f(1.34941, 1.34941) = 
+                  f(-1.34941, 1.34941) = f(-1.34941, -1.34941) = -2.06261
+
+    More information can be found here:
+        https://en.wikipedia.org/wiki/Test_functions_for_optimization
+
+    Parameters:
+        z1: Auxiliary variable such that z1 = np.sin(x)
+        z2: Auxiliary variable such that z2 = np.sin(y)
+        z3: Auxiliary variable such that z3 = |100 - sqrt(x**2 + y**2)/pi|
+        w: Auxiliary variable such that w = |z1*z2*exp(z3) + 1|
+    
+    Returns:
+        The value of the Cross-in-tray function at the given point.
+    """
+    return -0.0001*(w + 1)**0.1
+
+
+def plot_cross_in_tray2(x, y):
+    """
+    Defines the Cross-in-tray function in 2D, but in a way that is easier to
+    plot. The reason why this is necessary is because the Cross-in-tray function
+    is not convex and thus cannot be used in Gurobi. So we need to linearize
+    it.
+
+    https://en.wikipedia.org/wiki/Test_functions_for_optimization
+
+    Parameters:
+        x, y: Variables
+    
+    Returns:
+        The value of the Cross-in-tray function at the given point.
+    """
+    return -0.0001*(np.abs(np.sin(x)*np.sin(y)*np.exp(np.abs(100 - np.sqrt(x**2 + y**2)/np.pi))) + 1)**0.1
