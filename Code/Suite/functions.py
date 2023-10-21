@@ -23,11 +23,9 @@ def rastrigin2(x1, x2, u1, v1, u2, v2, A=20):
     Returns:
         The value of the Rastrigin function at the given point.    
     """
-
-
     return 2*A + x1**2 - A*u1*v1+ x2**2 - A*u2*v2
 
-def plot_rastrigin2(x, A=20):
+def nonlin_rastrigin2(x, A=20):
     """
     Defines the Rastrigin function in 2D, but in a way that is easier to
     plot. The reason why this is necessary is because the Rastrigin function
@@ -67,7 +65,7 @@ def ackley2(z1, z2, a=20, b=0.2, c=2*np.pi):
     return -20 * z2 - z1 + a + np.e + 20
 
 
-def plot_ackley2(x, y):
+def nonlin_ackley2(x, y):
     """
     Defines the Ackley function in 2D, but in a way that is easier to
     plot. The reason why this is necessary is because the Ackley function
@@ -101,7 +99,7 @@ def sphere2(x, y):
     return x**2 + y**2
 
 
-def plot_sphere2(x, y):
+def nonlin_sphere2(x, y):
     """
     Defines the Sphere function in 2D, but in a way that is easier to
     plot. The reason why this is necessary is because the Sphere function
@@ -181,7 +179,7 @@ def bukinN62(z1, z2):
     return 100*np.sqrt(z1) + 0.01*z2
 
 
-def plot_bukinN62(x, y):
+def nonlin_bukinN62(x, y):
     """
     Defines the Bukin function N. 6 in 2D, but in a way that is easier to
     plot. The reason why this is necessary is because the Bukin function N. 6
@@ -220,7 +218,7 @@ def leviN132(z1, z2, z3, z4, z5):
     return z1 + z4 * (1 + z2) + z5 * (1 + z3)
 
 
-def plot_leviN132(x, y):
+def nonlin_leviN132(x, y):
     """
     Defines the Levi function N. 13 in 2D, but in a way that is easier to
     plot. The reason why this is necessary is because the Levi function N. 13
@@ -264,7 +262,7 @@ def himmelblau2(x1, x2, v1, v2):
     return (v1 + x2 - 11)**2 + (x1 + v2 - 7)**2
 
 
-def plot_himmelblau2(x, y):
+def nonlin_himmelblau2(x, y):
     """
     Defines the Himmelblau function in 2D, but in a way that is easier to
     plot. The reason why this is necessary is because the Himmelblau function
@@ -308,7 +306,7 @@ def cross_in_tray2(w):
     return -0.0001*(w + 1)**0.1
 
 
-def plot_cross_in_tray2(x, y):
+def nonlin_cross_in_tray2(x, y):
     """
     Defines the Cross-in-tray function in 2D, but in a way that is easier to
     plot. The reason why this is necessary is because the Cross-in-tray function
@@ -347,7 +345,7 @@ def eggholder2(x, y, z1, z2):
     return -(y + 47)*z1 - x*z2
 
 
-def plot_eggholder2(x, y):
+def nonlin_eggholder2(x, y):
     """
     Defines the Eggholder function in 2D, but in a way that is easier to
     plot. The reason why this is necessary is because the Eggholder function
@@ -383,7 +381,7 @@ def holder_table2(w):
         The value of the Holder table function at the given point.
     """
 
-def plot_holder_table2(x, y):
+def nonlin_holder_table2(x, y):
     """
     Defines the Holder table function in 2D, but in a way that is easier to
     plot. The reason why this is necessary is because the Holder table function
@@ -418,7 +416,7 @@ def schafferN22(w1, w2):
     return 0.5 + (w1 - 0.5)/(w2)
 
 
-def plot_schafferN22(x, y):
+def nonlin_schafferN22(x, y):
     """
     Defines the Schaffer function N. 2 in 2D, but in a way that is easier to
     plot. The reason why this is necessary is because the Schaffer function N. 2
@@ -457,7 +455,7 @@ def schafferN42(w1, w2):
     return 0.5 + (w1 - 0.5)/(w2)
 
 
-def plot_schafferN42(x, y):
+def nonlin_schafferN42(x, y):
     """
     Defines the Schaffer function N. 4 in 2D, but in a way that is easier to
     plot. The reason why this is necessary is because the Schaffer function N. 4
