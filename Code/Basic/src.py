@@ -31,7 +31,7 @@ def potential(phi_arr, theta_arr):
     """
     # Calculate the distance between each pair of points
     coords = np.vstack((phi_arr, theta_arr))
-    dist= np.zeros((coords.shape[1], coords.shape[1]))
+    U = np.zeros((coords.shape[1], coords.shape[1]))
 
     # Iterate over columns
     for i in range(coords.shape[1]):
@@ -41,16 +41,21 @@ def potential(phi_arr, theta_arr):
         x_current, y_current, z_current = sphere2cart(phi_current, theta_current)
 
         for j in range(coords.shape[1]):
+            if i == j:
+                U[i, j] = 0
+                continue
             phi_other = coords[0, j]
             theta_other = coords[1, j]
 
             x_other, y_other, z_other = sphere2cart(phi_other, theta_other)
 
             # Calculate the distance between the two points
-            dist[i, j] = np.sqrt((x_current - x_other)**2 + (y_current - y_other)**2 + (z_current - z_other)**2)
+            U[i, j] = 1/(np.sqrt((x_current - x_other)**2 + \
+                                 (y_current - y_other)**2 + \
+                                 (z_current - z_other)**2))
             
     # Calculate the potential energy        
-    U = np.sum(1 / dist)  # * CONST
+    U = np.sum(U)  # * CONST
 
     return U
 
@@ -148,3 +153,75 @@ def sphere2cart(phi_arr, theta_arr, r=1):
     z = r * np.ones(phi_arr.size) * np.cos(theta_arr)
     
     return x, y, z
+
+
+def plot_potential2D(inital_params, converged_params):
+    """
+    Plots the potential energy as a function of the
+    possible configurations of the second charge.
+    This is used to visualize the Thomson problem but is
+    only possible so nicely for m = 2.
+
+    Parameters
+    ----------
+    inital_params : numpy.ndarray
+        Array of initial parameters/Starting guess.
+    converged_params : numpy.ndarray
+        Array of converged parameters/res.x given by 
+        minimize.
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Figure object.
+    ax : matplotlib.axes
+        Axes object.
+    """
+    # Unpack the parameters
+    two_m = inital_params.size
+    m = int(two_m / 2)
+    phi_i = inital_params[:m]
+    theta_i = inital_params[m:]
+    phi_f = converged_params[:m]
+    theta_f = converged_params[m:]
+
+    fig, ax = plt.subplots()
+
+    # Possible configurations of the second charge
+    phi = np.linspace(0, 2*np.pi, 100)
+    theta = np.linspace(0, np.pi, 100)
+    
+    U = np.empty((phi.size, theta.size))
+    
+    for i in range(phi.size):
+        for j in range(theta.size):
+            U[i, j] = potential(np.array([phi[i]]), np.array([theta[j]]))
+    
+    print(U)
+
+    # Plot the function
+    PHI, THETA = np.meshgrid(phi, theta)
+    
+    norm = mpl.colors.Normalize(vmin=U.min(), vmax=U.max())
+    mappable = mpl.cm.ScalarMappable(norm=norm, cmap='cmr.cosmic')
+    
+    ax.contourf(PHI, THETA, U, cmap='cmr.cosmic', levels=100)
+    ax.contour(PHI, THETA, U, colors='black', levels=20, linewidths=0.5)
+
+    cbar = fig.colorbar(mappable, ax=ax)
+    cbar.set_label(r"$U(\phi, \theta)$")
+    
+    # Plot starting point
+    ax.scatter(phi_i, theta_i, marker="D", color="#28fc8f", label="Starting points")
+    
+    # Plot converged point
+    ax.scatter(phi_f, theta_f, marker="X", color="#f20a72", label="Converged points")
+
+    ax.set_xlabel(r"$\phi$")
+    ax.set_ylabel(r"$\theta$")
+    # ax.set_aspect("equal")
+    ax.legend()
+
+    return fig, ax
+    
+    

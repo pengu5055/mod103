@@ -42,6 +42,13 @@ res = minimize(
 phi_arr = res.x[:m]
 theta_arr = res.x[m:]
 
+# --- Plot function that was minimized ---
+fig, ax = plot_potential2D(x0, res.x)
+
+plt.title("Potential energy as a function of the second charge")
+plt.show()
+
+
 # --- Plotting ---
 fig, ax = plot_unit_sphere(n)
 
