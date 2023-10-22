@@ -8,9 +8,9 @@ import cmasher as cmr
 from graddesc import gradient_descent
 from functions import rastrigin2, nonlin_rastrigin2
 
-# Define the function to be optimized
+# Define the function that calculates the gradient
 def gradient(x):
-    return np.gradient(nonlin_rastrigin2(x))
+    return np.gradient(x)
 
 # Define a random starting point
 scaling = 5.12
@@ -22,8 +22,8 @@ start = np.array([sign[0] * np.random.rand() * scaling, sign[1] * np.random.rand
 x_opt = gradient_descent(
     gradient=gradient,
     start=start,
-    learn_rate=0.2,
-    n_iter=1000,
+    learn_rate=0.02,
+    n_iter=100,
     tolerance=1e-06,
 )
 
