@@ -12,20 +12,18 @@ from gurobipy import GRB
 from src import *
 
 # --- Initialize ---
-# Minimize the function for a given number of points m
-m = 2
+# Minimize the function for a given number of additional points m
+# By default one charge is always placed at the north pole
+m = 1
 n = 50
 
-# Fix one point at the north pole
-phi_arr = np.array([0])
-theta_arr = np.array([0])
 # Give the rest random starting points
 # phi_arr = np.append(phi_arr, np.random.rand(m - 1) * 2*np.pi)
 # theta_arr = np.append(theta_arr, np.random.rand(m - 1) * np.pi)
 
 # Uniformly distribute points around the equator
-phi_arr = np.append(phi_arr, np.linspace(0, 2*np.pi, m - 1))
-theta_arr = np.append(theta_arr, np.ones(m - 1) * np.pi / 2)
+phi_arr = np.linspace(0, 2*np.pi, m)
+theta_arr = np.ones(m) * np.pi / 2
 
 # Create starting guess vector (concatenate phi and theta)
 x0 = np.concatenate((phi_arr, theta_arr))
@@ -54,7 +52,8 @@ fig, ax = plot_unit_sphere(n)
 
 x, y, z = sphere2cart(phi_arr, theta_arr)
 
-ax.scatter(x, y, z, marker="o", color="red", label="Starting points")
+ax.scatter(0, 0, 1, marker="o", color="green", label="North pole charge")
+ax.scatter(x, y, z, marker="o", color="red", label="Free charges")
 
 # Connect points with dashed lines
 # for i in range(m):

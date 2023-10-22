@@ -31,7 +31,7 @@ def potential(phi_arr, theta_arr):
     """
     # Calculate the distance between each pair of points
     coords = np.vstack((phi_arr, theta_arr))
-    U = np.zeros((coords.shape[1], coords.shape[1]))
+    U = np.zeros((coords.shape[1], coords.shape[1] + 1))
 
     # Iterate over columns
     for i in range(coords.shape[1]):
@@ -53,6 +53,11 @@ def potential(phi_arr, theta_arr):
             U[i, j] = 1/(np.sqrt((x_current - x_other)**2 + \
                                  (y_current - y_other)**2 + \
                                  (z_current - z_other)**2))
+        
+        # Calculate the distance to the fixed charge at the north pole
+        U[i, -1] = 1/(np.sqrt((x_current - 0)**2 + \
+                              (y_current - 0)**2 + \
+                              (z_current - 1)**2))
             
     # Calculate the potential energy        
     U = np.sum(U)  # * CONST
