@@ -55,12 +55,16 @@ x, y, z = sphere2cart(phi_arr, theta_arr)
 ax.scatter(0, 0, 1, marker="o", color="green", label="North pole charge")
 ax.scatter(x, y, z, marker="o", color="red", label="Free charges")
 
+x = np.append(x, 0)
+y = np.append(y, 0)
+z = np.append(z, 1)
+
 # Connect points with dashed lines
-# for i in range(m):
-#     for j in range(m):
-#         ax.plot([x[i], x[j]], [y[i], y[j]], [z[i], z[j]], linestyle="--", color="#696969")
+for i in range(m + 1):
+    for j in range(m + 1):
+        ax.plot([x[i], x[j]], [y[i], y[j]], [z[i], z[j]], linestyle="--", color="#696969")
 
-
+ax.set_title(f"Thomson Problem for m = {m}")
 plt.legend()
 plt.show()
 

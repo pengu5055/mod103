@@ -124,7 +124,6 @@ def plot_unit_sphere(n):
     ax.plot_surface(X, Y, Z, facecolors=cmr.cosmic(C), rstride=1,
                     cstride=1, linewidth=0, antialiased=False, alpha=0.3)
 
-    ax.set_title("Thomson Problem")
     ax.set_xlabel("x")
     ax.set_ylabel("y")
     ax.set_zlabel("z")
@@ -210,7 +209,7 @@ def plot_potential2D(inital_params, converged_params):
     norm = mpl.colors.Normalize(vmin=U.min(), vmax=U.max())
     mappable = mpl.cm.ScalarMappable(norm=norm, cmap='cmr.cosmic')
     
-    ax.contourf(PHI, THETA, U, cmap='cmr.cosmic', levels=100)
+    ax.contourf(PHI, THETA, U, cmap='cmr.cosmic', levels=100, norm=norm)
     ax.contour(PHI, THETA, U, colors='black', levels=20, linewidths=0.5)
 
     cbar = fig.colorbar(mappable, ax=ax)
