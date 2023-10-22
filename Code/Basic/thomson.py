@@ -20,8 +20,12 @@ n = 50
 phi_arr = np.array([0])
 theta_arr = np.array([0])
 # Give the rest random starting points
-phi_arr = np.append(phi_arr, np.random.rand(m - 1) * 2*np.pi)
-theta_arr = np.append(theta_arr, np.random.rand(m - 1) * np.pi)
+# phi_arr = np.append(phi_arr, np.random.rand(m - 1) * 2*np.pi)
+# theta_arr = np.append(theta_arr, np.random.rand(m - 1) * np.pi)
+
+# Uniformly distribute points around the equator
+phi_arr = np.append(phi_arr, np.linspace(0, 2*np.pi, m - 1))
+theta_arr = np.append(theta_arr, np.ones(m - 1) * np.pi / 2)
 
 # Create starting guess vector (concatenate phi and theta)
 x0 = np.concatenate((phi_arr, theta_arr))
@@ -30,7 +34,7 @@ x0 = np.concatenate((phi_arr, theta_arr))
 res = minimize(
     fun=wrapped_potential,
     x0=x0,
-    method="Nelder-Mead",
+    method="Powell",
     tol=1e-6,
 )
 

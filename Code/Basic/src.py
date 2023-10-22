@@ -29,22 +29,28 @@ def potential(phi_arr, theta_arr):
     U : numpy.float64
         Potential energy of the system.
     """
-    # Calculate the x, y, z coordinates on meshgrid
-    x = np.outer(np.cos(phi_arr), np.sin(theta_arr))
-    y = np.outer(np.sin(phi_arr), np.sin(theta_arr))
-    z = np.outer(np.ones(phi_arr.size), np.cos(theta_arr))
+    # Calculate the distance between each pair of points
+    coords = np.vstack((phi_arr, theta_arr))
+    dist= np.zeros((coords.shape[1], coords.shape[1]))
 
-    # Center of the sphere is at (x_0, y_0, z_0) and HARDCODED
-    x_0 = y_0 = z_0 = 0
+    # Iterate over columns
+    for i in range(coords.shape[1]):
+        phi_current = coords[0, i]
+        theta_current = coords[1, i]
+        # Calculate the distance to all other points
+        x_current, y_current, z_current = sphere2cart(phi_current, theta_current)
 
-    # Calculate the distance between each 
-    dist = np.zeros((phi_arr.size, phi_arr.size))
-    for i in range(phi_arr.size):
-        for j in range(phi_arr.size):
-            dist[i, j] = np.sqrt((x[i, j] - x_0)**2 + (y[i, j] - y_0)**2 + (z[i, j] - z_0)**2)
+        for j in range(coords.shape[1]):
+            phi_other = coords[0, j]
+            theta_other = coords[1, j]
 
-    # Calculate the potential energy
-    U = np.sum(CONST / dist)
+            x_other, y_other, z_other = sphere2cart(phi_other, theta_other)
+
+            # Calculate the distance between the two points
+            dist[i, j] = np.sqrt((x_current - x_other)**2 + (y_current - y_other)**2 + (z_current - z_other)**2)
+            
+    # Calculate the potential energy        
+    U = np.sum(1 / dist)  # * CONST
 
     return U
 
