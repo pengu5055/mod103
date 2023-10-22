@@ -34,11 +34,14 @@ def potential(phi_arr, theta_arr):
     y = np.outer(np.sin(phi_arr), np.sin(theta_arr))
     z = np.outer(np.ones(phi_arr.size), np.cos(theta_arr))
 
-    # Calculate the distance between each point
+    # Center of the sphere is at (x_0, y_0, z_0) and HARDCODED
+    x_0 = y_0 = z_0 = 0
+
+    # Calculate the distance between each 
     dist = np.zeros((phi_arr.size, phi_arr.size))
     for i in range(phi_arr.size):
         for j in range(phi_arr.size):
-            dist[i, j] = np.sqrt((x[i, j] - x)**2 + (y[i, j] - y)**2 + (z[i, j] - z)**2)
+            dist[i, j] = np.sqrt((x[i, j] - x_0)**2 + (y[i, j] - y_0)**2 + (z[i, j] - z_0)**2)
 
     # Calculate the potential energy
     U = np.sum(CONST / dist)
@@ -46,7 +49,7 @@ def potential(phi_arr, theta_arr):
     return U
 
 
-def wrap_potential(x):
+def wrapped_potential(x):
     """
     Wrap potential to only take one argument.
     Which is then unpacked into phi_arr and theta_arr.
@@ -63,8 +66,10 @@ def wrap_potential(x):
     U : numpy.float64
         Potential energy of the system.
     """
-    phi_arr = x[:, 0]
-    theta_arr = x[:, 1]
+    two_m = x.size
+    m = int(two_m / 2)
+    phi_arr = x[:m]
+    theta_arr = x[m:]
     return potential(phi_arr, theta_arr)
 
 
