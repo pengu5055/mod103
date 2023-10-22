@@ -6,6 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.axes3d as Axes3D
 import matplotlib as mpl
+from matplotlib.animation import FuncAnimation
 import cmasher as cmr
 
 # Define function to minimize
@@ -201,8 +202,6 @@ def plot_potential2D(inital_params, converged_params):
         for j in range(theta.size):
             U[i, j] = potential(np.array([phi[i]]), np.array([theta[j]]))
     
-    print(U)
-
     # Plot the function
     PHI, THETA = np.meshgrid(phi, theta)
     
@@ -227,5 +226,4 @@ def plot_potential2D(inital_params, converged_params):
     ax.legend()
 
     return fig, ax
-    
     
