@@ -74,15 +74,18 @@ plt.subplots_adjust(left=0, bottom=0.03, right=1, top=0.93)
 # artists = ax.get_children()
 # axes = {a.axes for a in artists}
 
-def init_anim():
-    ax.view_init(20, 0)
-    return fig,
+# --- Animation ---
+if False:
+    def init_anim():
+        ax.view_init(20, 0)
+        return fig,
+    
+    def animate(i):
+        ax.view_init(30, i)
+        return fig,
+    
+    anim = FuncAnimation(fig, animate, frames=360, interval=20, blit=False)
+    writer= FFMpegWriter(fps=30)
+    anim.save("./Videos/charges_10.mp4", writer=writer, dpi=400)
 
-def animate(i):
-    ax.view_init(30, i)
-    return fig,
-
-anim = FuncAnimation(fig, animate, frames=360, interval=20, blit=False)
-writer= FFMpegWriter(fps=30)
-anim.save("./Videos/charges_10.mp4", writer=writer, dpi=400)
 plt.show()

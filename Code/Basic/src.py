@@ -160,7 +160,7 @@ def sphere2cart(phi_arr, theta_arr, r=1):
     return x, y, z
 
 
-def plot_potential2D(inital_params, converged_params):
+def plot_potential2D(initial_params, converged_params):
     """
     Plots the potential energy as a function of the
     possible configurations of the second charge.
@@ -183,10 +183,10 @@ def plot_potential2D(inital_params, converged_params):
         Axes object.
     """
     # Unpack the parameters
-    two_m = inital_params.size
+    two_m = initial_params.size
     m = int(two_m / 2)
-    phi_i = inital_params[:m]
-    theta_i = inital_params[m:]
+    phi_i = initial_params[:m]
+    theta_i = initial_params[m:]
     phi_f = converged_params[:m]
     theta_f = converged_params[m:]
 
