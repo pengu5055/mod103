@@ -31,34 +31,93 @@ to_benchmark = [
 ]
 
 start_points = {
-    "rosenbrock": np.array([1, 1]),
-    "ackley": np.array([1, 1]),
-    "bukin": np.array([1, 1]),
-    "cross_in_tray": np.array([1, 1]),
-    "eggholder": np.array([1, 1]),
-    "himmelblau": np.array([1, 1]),
-    "holder_table": np.array([1, 1]),
-    "levi": np.array([1, 1]),
-    "rastrigin": np.array([1, 1]),
-    "schaffer2": np.array([1, 1]),
-    "schaffer4": np.array([1, 1]),
-    "sphere": np.array([1, 1]),
+    "nonlin_rosenbrock2": np.array([3, 2]),
+    "nonlin_ackley2": np.array([1, 1]),
+    "nonlin_bukinN62": np.array([1, 1]),
+    "nonlin_cross_in_tray2": np.array([5, -4]),
+    "nonlin_eggholder2": np.array([0, 0]),
+    "nonlin_himmelblau2": np.array([0, 0]),
+    "nonlin_holder_table2": np.array([0, 0]),
+    "nonlin_leviN132": np.array([5, 5]),
+    "nonlin_rastrigin2": np.array([3, 4]),
+    "nonlin_schafferN22": np.array([20, 10]),
+    "nonlin_schafferN42": np.array([20, 10]),
+    "nonlin_sphere2": np.array([50, 75]),
 }
 
-data = pd.DataFrame(columns=["Function", "Method", "Converged point", "Absolute error"])
+optimal_points = {
+    "nonlin_rosenbrock2": np.array([1, 1]),
+    "nonlin_ackley2": np.array([0, 0]),
+    "nonlin_bukinN62": np.array([-10, 1]),
+    "nonlin_cross_in_tray2": np.array([1.34941, -1.34941]),
+    "nonlin_eggholder2": np.array([512, 404.2319]),
+    "nonlin_himmelblau2": np.array([3, 2]),
+    "nonlin_holder_table2": np.array([8.05502, 9.66459]),
+    "nonlin_leviN132": np.array([1, 1]),
+    "nonlin_rastrigin2": np.array([0, 0]),
+    "nonlin_schafferN22": np.array([0, 0]),
+    "nonlin_schafferN42": np.array([0, 1.25313]),
+    "nonlin_sphere2": np.array([0, 0]),
+}
+
+boundaries = {
+    "nonlin_rosenbrock2": [(-5, 5), (-5, 5)],
+    "nonlin_ackley2": [(-5, 5), (-5, 5)],
+    "nonlin_bukinN62": [(-15, -5), (-3, 3)],
+    "nonlin_cross_in_tray2": [(-10, 10), (-10, 10)],
+    "nonlin_eggholder2": [(-700, 700), (-700, 700)],
+    "nonlin_himmelblau2": [(-5, 5), (-5, 5)],
+    "nonlin_holder_table2": [(-1000, 1000), (-1000, 1000)],
+    "nonlin_leviN132": [(-10, 10), (-10, 10)],
+    "nonlin_rastrigin2": [(-5.12, 5.12), (-5.12, 5.12)],
+    "nonlin_schafferN22": [(-100, 100), (-100, 100)],
+    "nonlin_schafferN42": [(-100, 100), (-100, 100)],
+    "nonlin_sphere2": [(-100, 100), (-100, 100)],
+}
+
+methods = [
+    "Basin_hopping",
+    "Differential_evolution",
+    "Dual_annealing",
+    "SHGO",
+]
+
+columns = ["Method", "Start point", "Converged point", "Absolute error"]
+index = ["Function"]
+
+# Create a dataframe to store the results
+data = pd.DataFrame()
 
 # --- Benchmark ---
 
 for func in to_benchmark:
-    points = benchmark_func(func, np.array([1, 1]))
+    name = func.__name__
+    print(f"Benchmarking function: {name}")
+    points = benchmark_func(func, start_points[name], boundaries[name])
 
-points = benchmark_func(nonlin_rastrigin2, np.array([1, 1]))
+    # Calculate the absolute error
+    abs_error = np.abs(points - optimal_points[name])
 
-correct = np.array([0, 0])
+    # Add the results to the dataframe
+    for i, point in enumerate(points):
+        output = pd.DataFrame(
+            [
+                [
+                    methods[i],
+                    start_points[name],
+                    point,
+                    abs_error[i],
+                ]
+            ],
+            columns=columns,
+            index=[name],
+        )
 
-abs_error = np.abs(points - correct)
-print(f"Converged points {points}")
-print(f"Absolute error {abs_error}")
+        data = pd.concat([data, output])
+
+data.to_hdf("Results/global_benchmarks.h5", key="Benchmarks", mode="w", complevel=9)
+
+print(data)
 
 
 

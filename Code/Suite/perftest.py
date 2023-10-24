@@ -56,11 +56,9 @@ def benchmark_func(
     if not isinstance(start, Iterable):
         raise TypeError("start must be an iterable.")
 
-    results = []
-
     func = functions
     to_minimize = lambda x: wrap_2D(x, func=func)
-    column = []
+    results = []
 
     print("Using method: Basin hopping")
     res = basinhopping(
@@ -70,7 +68,7 @@ def benchmark_func(
         niter=100,
         disp=False,
     )
-    column.append(res.x)
+    results.append(res.x)
 
     print("Using method: Differential evolution")
 
@@ -81,22 +79,20 @@ def benchmark_func(
         bounds=bounds,
         disp=False,
     )
-    column.append(res.x)
+    results.append(res.x)
 
     print("Using method: Dual annealing")
     res = dual_annealing(
         func=to_minimize,
         bounds=bounds,
     )
-    column.append(res.x)
+    results.append(res.x)
 
     print("Using method: SHGO")
     res = shgo(
         func=to_minimize,
         bounds=bounds,
     )
-    column.append(res.x)
-
-    results.append(column)
+    results.append(res.x)
 
     return results
