@@ -13,6 +13,8 @@ def rastrigin2(x1, x2, u1, v1, u2, v2, A=20):
     that looks like a bunch of hills and valleys in a grid pattern (at 
     least for n=2). 
 
+        f(x, y) = f(0, 0) = 0
+
     https://en.wikipedia.org/wiki/Rastrigin_function
 
     Parameters:
@@ -32,6 +34,8 @@ def nonlin_rastrigin2(x, y, A=20):
     is not convex and thus cannot be used in Gurobi. So we need to linearize
     it.
 
+        f(x, y) = f(0, 0) = 0
+
     https://en.wikipedia.org/wiki/Rastrigin_function
 
     Parameters:
@@ -50,6 +54,8 @@ def ackley2(z1, z2, a=20, b=0.2, c=2*np.pi):
     Defines the Ackley function in 2D. This is a pathological function
     that looks like a bunch of hills and valleys in a grid pattern (at 
     least for n=2) but it is different from the Rastrigin function.
+
+        f(x, y) = f(0, 0) = 0    
 
     https://en.wikipedia.org/wiki/Ackley_function
 
@@ -72,6 +78,8 @@ def nonlin_ackley2(x, y):
     is not convex and thus cannot be used in Gurobi. So we need to linearize
     it.
 
+        f(x, y) = f(0, 0) = 0
+
     https://en.wikipedia.org/wiki/Ackley_function
 
     Parameters:
@@ -87,6 +95,8 @@ def nonlin_ackley2(x, y):
 def sphere2(x, y):
     """
     Defines the Sphere function in 2D. 
+
+        f(x, y) = f(0, 0) = 0
 
     https://en.wikipedia.org/wiki/Test_functions_for_optimization
 
@@ -106,6 +116,8 @@ def nonlin_sphere2(x, y):
     is not convex and thus cannot be used in Gurobi. So we need to linearize
     it.
 
+        f(x, y) = f(0, 0) = 0
+
     https://en.wikipedia.org/wiki/Test_functions_for_optimization
 
     Parameters:
@@ -120,6 +132,9 @@ def nonlin_sphere2(x, y):
 def rosenbrock2(x, y, v, a=1, b=100):
     """
     Defines the Rosenbrock function in 2D. 
+    Has a global minimum at (1, 1).
+
+        f(x, y) = f(1, 1) = 0
 
     https://en.wikipedia.org/wiki/Rosenbrock_function
 
@@ -134,12 +149,14 @@ def rosenbrock2(x, y, v, a=1, b=100):
     return (a - x)**2 + b*(y - v)**2
 
 
-def rosenbrock2_plot(x, y, a=1, b=100):
+def nonlin_rosenbrock2(x, y, a=1, b=100):
     """
     Defines the Rosenbrock function in 2D, but in a way that is easier to
     plot. The reason why this is necessary is because the Rosenbrock function
     is not convex and thus cannot be used in Gurobi. So we need to linearize
-    it.
+    it. Has a global minimum at (0, 0).
+
+        f(x, y) = f(1, 1) = 0
 
     https://en.wikipedia.org/wiki/Rosenbrock_function
 
@@ -186,6 +203,8 @@ def nonlin_bukinN62(x, y):
     is not convex and thus cannot be used in Gurobi. So we need to linearize
     it.
 
+        f(x, y) = f(-10, 1) = 0
+
     https://en.wikipedia.org/wiki/Test_functions_for_optimization
 
     Parameters:
@@ -224,6 +243,8 @@ def nonlin_leviN132(x, y):
     plot. The reason why this is necessary is because the Levi function N. 13
     is not convex and thus cannot be used in Gurobi. So we need to linearize
     it.
+        
+         f(x, y) = f(1, 1) = 0
 
     https://en.wikipedia.org/wiki/Test_functions_for_optimization
 
@@ -269,6 +290,9 @@ def nonlin_himmelblau2(x, y):
     is not convex and thus cannot be used in Gurobi. So we need to linearize
     it.
 
+        f(x, y) = f(3, 2) = f(-2.805118, 3.131312) = f(-3.779310, -3.283186) = 
+                  f(3.584428, -1.848126) = 0
+
     https://en.wikipedia.org/wiki/Himmelblau%27s_function
 
     Parameters:
@@ -313,6 +337,9 @@ def nonlin_cross_in_tray2(x, y):
     is not convex and thus cannot be used in Gurobi. So we need to linearize
     it.
 
+        f(x, y) = f(1.34941, -1.34941) = f(1.34941, 1.34941) = 
+                  f(-1.34941, 1.34941) = f(-1.34941, -1.34941) = -2.06261
+
     https://en.wikipedia.org/wiki/Test_functions_for_optimization
 
     Parameters:
@@ -352,6 +379,8 @@ def nonlin_eggholder2(x, y):
     is not convex and thus cannot be used in Gurobi. So we need to linearize
     it.
 
+        f(x, y) = f(512, 404.2319) = -959.6407
+
     https://en.wikipedia.org/wiki/Test_functions_for_optimization
 
     Parameters:
@@ -388,6 +417,8 @@ def nonlin_holder_table2(x, y):
     is not convex and thus cannot be used in Gurobi. So we need to linearize
     it.
 
+        f(x, y) = f(8.05502, 9.66459) = -19.2085
+
     https://en.wikipedia.org/wiki/Test_functions_for_optimization
 
     Parameters:
@@ -422,6 +453,8 @@ def nonlin_schafferN22(x, y):
     plot. The reason why this is necessary is because the Schaffer function N. 2
     is not convex and thus cannot be used in Gurobi. So we need to linearize
     it.
+
+        f(x, y) = f(0, 0) = 0
 
     https://en.wikipedia.org/wiki/Test_functions_for_optimization
     
@@ -461,6 +494,12 @@ def nonlin_schafferN42(x, y):
     plot. The reason why this is necessary is because the Schaffer function N. 4
     is not convex and thus cannot be used in Gurobi. So we need to linearize
     it.
+
+        f(x, y) = f(0, 1.25313) = f(0, -1.25313) = f(1.25313, 0) = f(-1.25313, 0) 
+            = 0.292579
+
+        1.253131828792882 -> Coordinate 
+        0.292578632035980 -> Value
 
     https://en.wikipedia.org/wiki/Test_functions_for_optimization
     
