@@ -25,7 +25,7 @@ def rastrigin2(x1, x2, u1, v1, u2, v2, A=20):
     """
     return 2*A + x1**2 - A*u1*v1+ x2**2 - A*u2*v2
 
-def nonlin_rastrigin2(x, A=20):
+def nonlin_rastrigin2(x, y, A=20):
     """
     Defines the Rastrigin function in 2D, but in a way that is easier to
     plot. The reason why this is necessary is because the Rastrigin function
@@ -42,7 +42,7 @@ def nonlin_rastrigin2(x, A=20):
         The value of the Rastrigin function at the given point.
     """
 
-    return 2*A + x[0]**2 - A*np.cos(2*np.pi*x[0]) + x[1]**2 - A*np.cos(2*np.pi*x[1])
+    return 2*A + x**2 - A*np.cos(2*np.pi*x) + y**2 - A*np.cos(2*np.pi*y)
 
 
 def ackley2(z1, z2, a=20, b=0.2, c=2*np.pi):
