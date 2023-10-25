@@ -10,7 +10,7 @@ from constants import *
 
 
 # Load the results
-data = pd.read_hdf("Results/global_benchmarks.h5", key="Benchmarks")
+data = pd.read_hdf("Results/rel-err_benchmark.h5", key="Benchmarks")
 # The aim is to plot a heatmap of the absolute error for each function
 # and each method.
 
@@ -49,12 +49,22 @@ cbar.set_label(r"Abs. error")
 # will be drawn over the matrix elements
 plt.grid(True, color="w", linestyle="--", linewidth=1)
 
-names = [str(func.__name__).removeprefix("nonlin_") for func in to_benchmark]
+names = [str(func.__name__)
+         .removeprefix("nonlin_")
+         .removesuffix("2") for func in to_benchmark]
+names = names[::-1]
+names = ["".join([name[i].upper() if i == 0 else name[i] for i in range(len(name))])
+           .replace("_", " ")
+           .replace("N", " N") for name in names]
+
+methods = [method.replace("_", " ") for method in methods]
+
 
 ax.set_xticks(np.arange(3*len(methods), step=3) + 1.5) 
 ax.set_yticks(np.arange(len(to_benchmark)))
 
 ax.set_xticklabels(methods)
+# Reverse the order of the y-ticks so that the functions are in the same order
 ax.set_yticklabels(names)
 
 ax.set_xlabel("Method")
