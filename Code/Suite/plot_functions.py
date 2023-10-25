@@ -79,7 +79,7 @@ if False:
     plt.show()
 
 # --- Plot 2 ---
-if True:
+if False:
     fig, ax = plt.subplots(2, 2, figsize=(10, 10))
     
     ax[0, 0].set_title("Eggholder")
@@ -141,3 +141,67 @@ if True:
                         top=0.95, bottom=0.15)
     plt.show()
 
+# --- Plot 3 ---
+if True:
+    fig, ax = plt.subplots(2, 2, figsize=(10, 10))
+
+    ax[0, 0].set_title("Rastrigin")
+    X, Y = np.meshgrid(np.linspace(*bounds["nonlin_rastrigin2"][0], 1000), np.linspace(*bounds["nonlin_rastrigin2"][1], 1000))
+    Z = functions[8](X, Y)
+    cm = pl.colorbrewer.sequential.BuPu_7.mpl_colormap
+    norm = mpl.colors.Normalize(vmin=np.min(Z), vmax=np.max(Z))
+    mappable = mpl.cm.ScalarMappable(norm=norm, cmap=cm)
+    ax[0, 0].contourf(X, Y, Z, cmap=cm, levels=100, norm=norm)
+    ax[0, 0].contour(X, Y, Z, colors='black', levels=20, linewidths=0.5)
+    ax[0, 0].scatter(*minima["nonlin_rastrigin2"], marker="D", color="#f20a72", label="Global minimum")
+    cbar = fig.colorbar(mappable, ax=ax[0, 0])
+
+    ax[0, 1].set_title("Schaffer N2")
+    X, Y = np.meshgrid(np.linspace(*bounds["nonlin_schafferN22"][0], 1000), np.linspace(*bounds["nonlin_schafferN22"][1], 1000))
+    Z = functions[9](X, Y)
+    cm = pl.colorbrewer.sequential.Purples_7.mpl_colormap
+    norm = mpl.colors.Normalize(vmin=np.min(Z), vmax=np.max(Z))
+    mappable = mpl.cm.ScalarMappable(norm=norm, cmap=cm)
+    ax[0, 1].contourf(X, Y, Z, cmap=cm, levels=100, norm=norm)
+    ax[0, 1].contour(X, Y, Z, colors='black', levels=1, linewidths=0.5)
+    ax[0, 1].scatter(*minima["nonlin_schafferN22"], marker="D", color="#f20a72", label="Global minimum")
+    cbar = fig.colorbar(mappable, ax=ax[0, 1])
+    ax[0, 1].set_xlim(-10, 10)
+    ax[0, 1].set_ylim(-10, 10)
+
+    ax[1, 0].set_title("Schaffer N4")
+    X, Y = np.meshgrid(np.linspace(*bounds["nonlin_schafferN42"][0], 1000), np.linspace(*bounds["nonlin_schafferN42"][1], 1000))
+    Z = functions[10](X, Y)
+    cm = pl.colorbrewer.sequential.YlGn_7.mpl_colormap
+    norm = mpl.colors.Normalize(vmin=np.min(Z), vmax=np.max(Z))
+    mappable = mpl.cm.ScalarMappable(norm=norm, cmap=cm)
+    ax[1, 0].contourf(X, Y, Z, cmap=cm, levels=100, norm=norm)
+    ax[1, 0].contour(X, Y, Z, colors='black', levels=1, linewidths=0.5)
+    mm = [(0, 0), (0, 1.25313), (0, -1.25313)]
+    for i in mm:
+        ax[1, 0].scatter(*i, marker="D", color="#f20a72", label="Global minimum")
+    cbar = fig.colorbar(mappable, ax=ax[1, 0])
+    ax[1, 0].set_xlim(-10, 10)
+    ax[1, 0].set_ylim(-10, 10)
+
+    ax[1, 1].set_title("Sphere")
+    X, Y = np.meshgrid(np.linspace(*bounds["nonlin_sphere2"][0], 1000), np.linspace(*bounds["nonlin_sphere2"][1], 1000))
+    Z = functions[11](X, Y)
+    cm = pl.colorbrewer.sequential.YlOrRd_7.mpl_colormap
+    norm = mpl.colors.Normalize(vmin=np.min(Z), vmax=np.max(Z))
+    mappable = mpl.cm.ScalarMappable(norm=norm, cmap=cm)
+    ax[1, 1].contourf(X, Y, Z, cmap=cm, levels=100, norm=norm)
+    ax[1, 1].contour(X, Y, Z, colors='black', levels=20, linewidths=0.5)
+    ax[1, 1].scatter(*minima["nonlin_sphere2"], marker="D", color="#f20a72", label="Global minimum")
+    cbar = fig.colorbar(mappable, ax=ax[1, 1])
+
+    for i in range(2):
+        for j in range(2):
+            ax[i, j].set_xlabel(r"$x$")
+            ax[i, j].set_ylabel(r"$y$")
+            # ax[i, j].set_aspect("equal")
+            # ax[i, j].legend()
+
+    plt.subplots_adjust(wspace=0.17, left=0.07, right=0.98,
+                        top=0.95, bottom=0.15)
+    plt.show()

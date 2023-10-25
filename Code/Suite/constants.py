@@ -59,8 +59,8 @@ boundaries = {
     "nonlin_holder_table2": [(-10, 10), (-10, 10)],
     "nonlin_leviN132": [(-5, 7), (-5, 7)],
     "nonlin_rastrigin2": [(-5.12, 5.12), (-5.12, 5.12)],
-    "nonlin_schafferN22": [(-100, 100), (-100, 100)],
-    "nonlin_schafferN42": [(-100, 100), (-100, 100)],
+    "nonlin_schafferN22": [(-50, 50), (-50, 50)],
+    "nonlin_schafferN42": [(-50, 50), (-50, 50)],
     "nonlin_sphere2": [(-100, 100), (-100, 100)],
 }
 
