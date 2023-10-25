@@ -398,6 +398,8 @@ def holder_table2(w):
     (8.05502, 9.66459) and is shaped like a picnic blanket or a table cloth.
 
         f(x, y) = f(8.05502, 9.66459) = -19.2085
+
+        [(8.05502, 9.66459), (-8.05502, 9.66459), (8.05502, -9.66459), (-8.05502, -9.66459)]
     
     More information can be found here:
         https://en.wikipedia.org/wiki/Test_functions_for_optimization

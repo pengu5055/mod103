@@ -114,7 +114,9 @@ if True:
     mappable = mpl.cm.ScalarMappable(norm=norm, cmap=cm)
     ax[1, 0].contourf(X, Y, Z, cmap=cm, levels=100, norm=norm)
     ax[1, 0].contour(X, Y, Z, colors='black', levels=35, linewidths=0.5)
-    ax[1, 0].scatter(*minima["nonlin_holder_table2"], marker="D", color="#f20a72", label="Global minimum")
+    mm = [(8.05502, 9.66459), (-8.05502, 9.66459), (8.05502, -9.66459), (-8.05502, -9.66459)]
+    for i in mm:
+        ax[1, 0].scatter(*i, marker="D", color="#f20a72", label="Global minimum")
     cbar = fig.colorbar(mappable, ax=ax[1, 0])
     
     ax[1, 1].set_title("Levi N13")
