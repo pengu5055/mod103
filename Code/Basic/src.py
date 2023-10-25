@@ -8,6 +8,7 @@ import mpl_toolkits.mplot3d.axes3d as Axes3D
 import matplotlib as mpl
 from matplotlib.animation import FuncAnimation
 import cmasher as cmr
+from scipy.optimize import minimize
 
 # Define function to minimize
 CONST = 1 / (4 * np.pi * 8.85*10**(-12))
@@ -226,4 +227,23 @@ def plot_potential2D(initial_params, converged_params):
     ax.legend()
 
     return fig, ax
+
+def stoplight(v, v_0, t_step):
+    output = []
+
+    v[0] = v_0
+
+    for i in range(len(v) - 1):
+        if i == 0:
+            term = 1/2 * ((v[0] - 0) / t_step)**2
+
+        elif i == len(v):
+            term = 1/2 * ((v[-1] - v[i]) / t_step)**2
+
+        term = ((v[i + 1] - v[i]) / t_step)**2
+
+        output.append(term)
     
+    return np.sum(output)
+
+        
