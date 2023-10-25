@@ -246,4 +246,46 @@ def stoplight(v, v_0, t_step):
     
     return np.sum(output)
 
-        
+
+def stoplight_solver(n, v_0, l, t_step, KAPPA):
+    """
+    Function that solves the stoplight variational problem
+    using nonlinear optimization.
+
+    Parameters
+    ----------
+    n : int
+        Number of time steps.
+    v_0 : float
+        Initial velocity.
+    l : float
+        Length till stoplight.
+    t_step : float
+        Time step.
+    KAPPA : float
+        Penalty parameter for distance constraint.
+    
+    Returns
+    -------
+    res.x : numpy.ndarray
+        Array of velocities at each time step.
+    """
+    to_minimize = lambda v: stoplight(v, v_0, t_step)
+    
+    # Add constraints
+    constraint = lambda v: 1 + np.exp(KAPPA * (np.sum([0.5 * v[i] if i == 0 or i == len(v) - 1 else v[i] for i in range(len(v))]) - l/t_step))
+    
+    # positivity = 
+    
+    func = lambda v: to_minimize(v) + constraint(v)
+    
+    # Define as n dimensional problem. One for each time step or rather v_i
+    t = np.linspace(0, 1, n)
+    res = minimize(
+        fun=func,
+        x0=np.ones(n) * v_0,
+        method="Powell",
+        tol=1e-6,
+    )
+
+    return res.x
