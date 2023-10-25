@@ -17,27 +17,27 @@ t_step = 1  # Time step
 KAPPA = 0.1  # Penalty parameter
 
 # --- Parameter Sweeps ---
-KAPPA = np.linspace(0, 1, 10)
+t_step = np.linspace(0, 1, 10)
 
 output = []
-for i, k in enumerate(KAPPA):
-    print(f"Solving for parameter {i + 1} of {len(KAPPA)}")
-    solution = stoplight_solver(n, v_0, l, t_step, k)
+for i, k in enumerate(t_step):
+    print(f"Solving for parameter {i + 1} of {len(t_step)}")
+    solution = stoplight_solver(n, v_0, l, k, KAPPA)
     output.append(solution)
 # --- Plot ---
 cm = pl.cartocolors.qualitative.Prism_10.mpl_colormap
-colors = cmr.take_cmap_colors(cm, len(KAPPA), return_fmt="hex", cmap_range=(0.2, 0.8))
+colors = cmr.take_cmap_colors(cm, len(t_step), return_fmt="hex", cmap_range=(0.2, 0.8))
 
 fig, ax = plt.subplots()
 
 # Plot the function
 for i in range(len(output)):
     solution = output[i]
-    ax.plot(solution, label=f"$\kappa={round(KAPPA[i],2)}$", color=colors[i])
+    ax.plot(solution, label=f"$t_0={round(t_step[i],2)}$", color=colors[i])
 
 ax.set_xlabel("Time step")
 ax.set_ylabel("Velocity")
-ax.set_title("Stoplight problem with different penalty parameters")
+ax.set_title("Stoplight problem with different time steps")
 plt.legend(loc="lower left")
 plt.grid(color="#4d4d4d", alpha=0.1)
 plt.show()

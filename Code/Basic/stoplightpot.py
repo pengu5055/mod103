@@ -5,6 +5,7 @@ produce 2 dimensions.
 """
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation, FFMpegWriter
 import matplotlib as mpl
 from src import *
 import palettable as pl
@@ -15,25 +16,27 @@ n = 100  # Number of time steps
 v_0 = 5  # Initial velocity
 l = 100 # Length till stoplight
 t_step = 1  # Time step
-KAPPA = 0.1  # Penalty parameter
+KAPPA = 0.001  # Penalty parameter
 
-func = lambda v: 1/2 * ((v_0 - 0)/t_step)**2 + \
+lag = lambda v: 1/2 * ((v_0 - 0)/t_step)**2 + \
                        ((v[0] - v_0)/t_step)**2 + \
                  1/2 * ((v[1] - v[0])/t_step)**2
 
 constraint = lambda v: 1 + np.exp(KAPPA * (1/2*v_0 + v[0] + 1/2*v[1] - l/t_step))
 
+func = lambda v: lag(v) + constraint(v)
+
 # --- Plot ---
 fig, ax = plt.subplots()
 
-v1 = np.linspace(-100, 100, 1000)
-v2 = np.linspace(-100, 100, 1000)
+v1 = np.linspace(-1000, 1000, 10000)
+v2 = np.linspace(-1000, 1000, 10000)
 
 V1, V2 = np.meshgrid(v1, v2)
 
 Z = func([V1, V2])
 
-cm = pl.cartocolors.sequential.Burg_7.mpl_colormap#.reversed()
+cm = pl.cartocolors.sequential.Magenta_7.mpl_colormap#.reversed()
 norm = mpl.colors.Normalize(vmin=np.min(Z), vmax=np.max(Z))
 mappable = mpl.cm.ScalarMappable(norm=norm, cmap=cm)
 
