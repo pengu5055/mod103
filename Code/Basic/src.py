@@ -246,6 +246,29 @@ def stoplight(v, v_0, t_step):
     
     return np.sum(output)
 
+def stoplight_dimless(v, v_0, l, t_step, convert=True):
+    output = []
+    t_0 = l / v_0
+
+    if convert:
+        nu = np.array(v) / v_0
+        tau = np.array(t_step) / t_0
+
+    nu[0] = 1
+    
+    for i in range(len(nu) - 1):
+        if i == 0:
+            term = 1/2 * ((nu[0] - 0) / tau)**2 * (1/l**2)
+        
+        elif i == len(nu):
+            term = 1/2 * ((nu[-1] - nu[i]) / tau)**2 * (1/l**2)
+
+        term = ((nu[i + 1] - nu[i]) / tau)**2 * (1/l**2)
+
+        output.append(term)
+
+    return np.sum(output)
+
 
 def stoplight_solver(n, v_0, l, t_step, KAPPA):
     """
@@ -271,6 +294,51 @@ def stoplight_solver(n, v_0, l, t_step, KAPPA):
         Array of velocities at each time step.
     """
     to_minimize = lambda v: stoplight(v, v_0, t_step)
+    
+    # Add constraints
+    constraint = lambda v: 1 + np.exp(KAPPA * (np.sum([0.5 * v[i] if i == 0 or i == len(v) - 1 else v[i] for i in range(len(v))]) - l/t_step))
+    
+    # positivity = 
+    
+    func = lambda v: to_minimize(v) + constraint(v)
+    
+    # Define as n dimensional problem. One for each time step or rather v_i
+    t = np.linspace(0, 1, n)
+    res = minimize(
+        fun=func,
+        x0=np.ones(n) * v_0,
+        method="Powell",
+        tol=1e-6,
+    )
+
+    return res.x
+
+
+def dimless_solver(n, v_0, l, t_step, KAPPA, convert=True):
+    """
+    Function that solves the stoplight variational problem
+    using nonlinear optimization. This time trying to use a
+    dimensionless formulation.
+
+    Parameters
+    ----------
+    n : int
+        Number of time steps.
+    v_0 : float
+        Initial velocity.
+    l : float
+        Length till stoplight.
+    t_step : float
+        Time step.
+    KAPPA : float
+        Penalty parameter for distance constraint.
+    
+    Returns
+    -------
+    res.x : numpy.ndarray
+        Array of velocities at each time step.
+    """
+    to_minimize = lambda v: stoplight_dimless(v, v_0, l, t_step, convert=convert)
     
     # Add constraints
     constraint = lambda v: 1 + np.exp(KAPPA * (np.sum([0.5 * v[i] if i == 0 or i == len(v) - 1 else v[i] for i in range(len(v))]) - l/t_step))

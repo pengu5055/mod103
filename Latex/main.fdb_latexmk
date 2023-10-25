@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1698265380 "main.aux" "main.bbl" "main" 1698265753 0
+["bibtex main"] 1698265380 "main.aux" "main.bbl" "main" 1698266083 0
   "./sources.bib" 1697060406 585 59db498271dfb5e1811a288748c6fc20 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/unsrt.bst" 1684972800 18030 1376b4b231b50c66211e47e42eda2875 ""
-  "main.aux" 1698265753 1326 efdbee3180170e8d28965b2cb76d057c "pdflatex"
+  "main.aux" 1698266083 1326 efdbee3180170e8d28965b2cb76d057c "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1698265753 "/home/pengu5055/Documents/FMF/Year1/MA1/mod103/Latex/main.tex" "main.pdf" "main" 1698265753 0
-  "/home/pengu5055/Documents/FMF/Year1/MA1/mod103/Latex/main.tex" 1698265752 1304 32a00ce40a9e7901a7e5061cebe73b5d ""
+["pdflatex"] 1698266083 "/home/pengu5055/Documents/FMF/Year1/MA1/mod103/Latex/main.tex" "main.pdf" "main" 1698266083 0
+  "/home/pengu5055/Documents/FMF/Year1/MA1/mod103/Latex/main.tex" 1698266083 1401 92f4dc4e4a24a6a8436f223297f9aff5 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -90,11 +90,11 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1697067503 4603192 0eff5d941e341e7e38e369b967619829 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1698184798 7863017 0e78b0df0d83ada11ff4dea35803c082 ""
   "logo.png" 1697060406 8303 7b15c7eec596b95d22d9e8d01528be9a ""
-  "main.aux" 1698265753 1326 efdbee3180170e8d28965b2cb76d057c "pdflatex"
+  "main.aux" 1698266083 1326 efdbee3180170e8d28965b2cb76d057c "pdflatex"
   "main.bbl" 1698265380 49 0eba253fc001332e731e8aba3f23127b "bibtex main"
-  "main.out" 1698265753 609 6dbb6e0b22aa26b1004ac1d435cf1dcb "pdflatex"
-  "main.tex" 1698265752 1304 32a00ce40a9e7901a7e5061cebe73b5d ""
-  "main.toc" 1698265753 421 7a1b67f5b1cf06999da3820a3c9d6757 "pdflatex"
+  "main.out" 1698266083 609 6dbb6e0b22aa26b1004ac1d435cf1dcb "pdflatex"
+  "main.tex" 1698266083 1401 92f4dc4e4a24a6a8436f223297f9aff5 ""
+  "main.toc" 1698266083 421 7a1b67f5b1cf06999da3820a3c9d6757 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

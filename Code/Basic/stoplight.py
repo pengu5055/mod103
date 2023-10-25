@@ -25,7 +25,7 @@ for i, k in enumerate(KAPPA):
     solution = stoplight_solver(n, v_0, l, t_step, k)
     output.append(solution)
 # --- Plot ---
-cm = pl.cartocolors.sequential.PurpOr_4.mpl_colormap
+cm = pl.cartocolors.qualitative.Prism_10.mpl_colormap
 colors = cmr.take_cmap_colors(cm, len(KAPPA), return_fmt="hex", cmap_range=(0.2, 0.8))
 
 fig, ax = plt.subplots()
@@ -33,11 +33,12 @@ fig, ax = plt.subplots()
 # Plot the function
 for i in range(len(output)):
     solution = output[i]
-    ax.plot(solution, label=f"\kappa={KAPPA[i]}", color=colors[i])
+    ax.plot(solution, label=f"$\kappa={round(KAPPA[i],2)}$", color=colors[i])
 
 ax.set_xlabel("Time step")
 ax.set_ylabel("Velocity")
 ax.set_title("Stoplight problem with different penalty parameters")
-plt.legend()
+plt.legend(loc="lower left")
+plt.grid(color="#4d4d4d", alpha=0.1)
 plt.show()
 
