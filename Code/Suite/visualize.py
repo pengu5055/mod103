@@ -36,14 +36,19 @@ mappable = mpl.cm.ScalarMappable(norm=norm, cmap=cmr.ember)
 
 print(len(methods)/len(to_benchmark))
 
-im = ax.imshow(error_matrix, extent=[0, 3*len(methods), 0, len(to_benchmark)],
-               cmap=cmr.ember, norm=norm)
+# Extent set so that the heatmap is square and aligned with the plot grid
+im = ax.imshow(error_matrix, extent=[1.5, 3*len(methods) + 1.5, 0, len(to_benchmark) + 0],
+               interpolation='none', cmap=cmr.ember, norm=norm)
 
 # Add the colorbar
 cbar = fig.colorbar(mappable, ax=ax)
 cbar.set_label(r"Abs. error")
 
 # Add the function names
+
+# Try and set grid before setting ticks since then grid 
+# will be drawn over the matrix elements
+plt.grid(True, color="w", linestyle="--", linewidth=1)
 
 names = [str(func.__name__).removeprefix("nonlin_") for func in to_benchmark]
 
@@ -63,7 +68,8 @@ plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
 for i in range(len(to_benchmark)):
     for j in range(len(methods)):
         text = ax.text(
-            3*j + 1.5,
+            # Corrections for grid alignment and for center justification
+            3*j + 1.5 + 1.5,
             i + 0.5,
             f"{error_matrix[i, j]:.2e}",
             ha="center",
