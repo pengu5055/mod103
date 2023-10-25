@@ -79,6 +79,18 @@ for func in to_benchmark:
                 smallest = np.max(schaffer_abs_error)
                 optimal_points[name] = point
     
+    elif name == "nonlin_holder_table2":
+        possibilities = np.array([(8.05502, 9.66459), (-8.05502, 9.66459), (8.05502, -9.66459), (-8.05502, -9.66459)])
+
+        smallest = np.inf
+        for point in possibilities:
+            holder_abs_error = np.abs(points - point)
+
+            if np.max(holder_abs_error) < smallest:
+                smallest = np.max(holder_abs_error)
+                optimal_points[name] = point
+    
+    
     # --- Calculate the absolute error ---
 
     # Calculate the absolute error
@@ -101,7 +113,7 @@ for func in to_benchmark:
 
         data = pd.concat([data, output])
 
-data.to_hdf("Results/rel-err_benchmark.h5", key="Benchmarks", mode="w", complevel=9)
+data.to_hdf("Results/rel-err_benchmark_v2.h5", key="Benchmarks", mode="w", complevel=9)
 
 print(data)
 

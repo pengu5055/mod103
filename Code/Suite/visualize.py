@@ -11,7 +11,7 @@ import palettable as pl
 
 
 # Load the results
-data = pd.read_hdf("Results/rel-err_benchmark.h5", key="Benchmarks")
+data = pd.read_hdf("Results/rel-err_benchmark_v2.h5", key="Benchmarks")
 # The aim is to plot a heatmap of the absolute error for each function
 # and each method.
 
