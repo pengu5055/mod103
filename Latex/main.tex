@@ -68,8 +68,41 @@ se vmeša meni priljubljen High Performance Computing in to da sem želel pri pr
 dimenzij. Tukaj sicer ne bomo počeli tega, ne ker ne bi želel, ampak ker žal nisem utegnil. \\
 
 \section{Naloga}
+Naloga je sestavljena iz dveh delov. Poglejmo:
+\subsection{Thomsonov problem}
+Thomsonov problem je problem, kjer želimo najti najboljšo porazdelitev n točk po sferi, tako da
+bo potencial (lahko si mislimo kot električni potencial) čim manjši. To je v bistvu problem, ki
+ga rešujemo pri modeliranju atomov. Naloga želi, da za različne metode optimizacije preštudiramo
+pojav in natančnost rešitev. \\
+
+\subsection{Vožnja skozi semafor}
+Vrača se primer, ki smo ga imeli za prvo nalogo pri Modelski Analizi 1 z to razliko, da bomo tokrat 
+namesto variacijskega problema reševali optimizacijski problem. Lagrangian je potrebno zapisati v 
+primerni obliki, nato pa lahko uporabimo neko metodo optimizacije, da dobimo rešitev. \\
 
 \section{Opis reševanja}
+Reševanja sem se, kot je navada, lotil v Pythonu. Za optimizacijo sem uporabil knjižnico \texttt{scipy},
+ki vsebuje veliko različnih metod za optimizacijo. Poskušal sem tudi z komercialnim solverjem \texttt{gurobipy}
+do katerega sem dobil dostop v kontekstu prejšnje naloge, ampak nisem dosegel željenih rezultatov. Ideja
+je bila, da bi potem reševanje paraleliziral. Poleg tega sem pa uporabil praktično stalen nabor knjižnic, ki
+torej \texttt{numpy}, \texttt{matplotlib}, \texttt{pandas} etc. \\
+
+\subsection{Suite of benchmarks}
+Za primerjavo uspešnosti različnih metod globalne optimizacije sem definiral suito funkcij, ki so posebej
+patološke oz. primerne za testiranje kvalitete optimizacijskih metod. Funkcije, ki sem jih definiral sem 
+narisal na sliki \ref{fig:benchmarks, fig:benchmarks2, fig:benchmarks3}. \\
+
+
+
+\subsection{Thomsonov problem}
+Najprej sem napisal funkcijo, ki je za dobljene kote $\theta$ in $\phi$ na enotski sferi izračunala
+potencial. Pri temu sem upošteval, da imamo pravzaprav $m = n - 1$ točk, ker je ena točka fiksna. Njo
+sem postavil na severni pol. Preostale točke sem porazdelil enakomerno po ekvatorju. Pogledal sem si
+natančnost različnih metod, ki jih nudi \texttt{scipy.optimize.minimize()} pri $m=1$, kajti to je edini
+primer za katerega sem se počutil samozavestno, da poznam analitičen odgovor. To pomeni, da sta dva naboja 
+na krogli, kar pomeni, da gre ne fiksirani naboj v drug pol. \\
+
+
 
 \section{Rezultati}
 

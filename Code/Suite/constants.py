@@ -50,14 +50,14 @@ optimal_points = {
 }
 
 boundaries = {
-    "nonlin_rosenbrock2": [(-5, 5), (-5, 5)],
+    "nonlin_rosenbrock2": [(-2, 2), (-1, 3)],
     "nonlin_ackley2": [(-5, 5), (-5, 5)],
     "nonlin_bukinN62": [(-15, -5), (-3, 3)],
     "nonlin_cross_in_tray2": [(-10, 10), (-10, 10)],
     "nonlin_eggholder2": [(-700, 700), (-700, 700)],
     "nonlin_himmelblau2": [(-5, 5), (-5, 5)],
-    "nonlin_holder_table2": [(-1000, 1000), (-1000, 1000)],
-    "nonlin_leviN132": [(-10, 10), (-10, 10)],
+    "nonlin_holder_table2": [(-10, 10), (-10, 10)],
+    "nonlin_leviN132": [(-5, 7), (-5, 7)],
     "nonlin_rastrigin2": [(-5.12, 5.12), (-5.12, 5.12)],
     "nonlin_schafferN22": [(-100, 100), (-100, 100)],
     "nonlin_schafferN42": [(-100, 100), (-100, 100)],
