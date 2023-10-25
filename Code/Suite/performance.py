@@ -15,7 +15,7 @@ from constants import *
 
 
 # --- Initialize ---
-columns = ["Method", "Start point", "Converged point", "Relative error"]
+columns = ["Method", "Start point", "Converged point", "Absolute error"]
 index = ["Function"]
 
 # Create a dataframe to store the results
