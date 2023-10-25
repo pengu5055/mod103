@@ -11,6 +11,7 @@
 \usepackage{siunitx}
 \usepackage{multimedia}
 \usepackage[table,xcdraw]{xcolor}
+\usepackage{float}
 \setlength\parindent{0pt}
 
 \newcommand{\ddd}{\mathrm{d}}
@@ -89,10 +90,51 @@ torej \texttt{numpy}, \texttt{matplotlib}, \texttt{pandas} etc. \\
 
 \subsection{Suite of benchmarks}
 Za primerjavo uspešnosti različnih metod globalne optimizacije sem definiral suito funkcij, ki so posebej
-patološke oz. primerne za testiranje kvalitete optimizacijskih metod. Funkcije, ki sem jih definiral sem 
-narisal na sliki \ref{fig:benchmarks, fig:benchmarks2, fig:benchmarks3}. \\
+patološke oz. primerne za testiranje kvalitete optimizacijskih metod. Pogledal sem si:
+\begin{itemize}
+    \item Basin Hopping
+    \item Differential Evolution
+    \item Dual Annealing
+    \item Simplicial Homology Global Optimization (SHGO)
+\end{itemize}
 
+Predstavljeno v enem stavku, Basin Hopping deluje tako, da delamo lokalno optimizacijo, nato pa naključno 
+spreminjamo parametre in ponovimo postopek. Differential Evolution je evolucijski algoritem, ki deluje tako,
+da naključno generira populacijo, nato pa jo spreminja z nekimi pravili. Dual Annealing je algoritem, ki
+deluje na principu simuliranega ohlajanja. SHGO pa je algoritem, ki deluje tako, da razdeli prostor parametrov
+na simplicialne komplekse in nato v vsakem izvede lokalno optimizacijo. Podrobneje je SHGO opisan v članku
+\cite{Endres2018}. \\
 
+Funkcije, ki sem jih definiral sem 
+narisal na slikah (\ref{fig:benchmarks}, \ref{fig:benchmarks2}, \ref{fig:benchmarks3}). Performance metod
+pri njihovi optimizaciji je prikazan v rezultatih.\\
+
+\begin{figure}[H]
+    \centering
+    \makebox[\textwidth][c]{%
+    \includegraphics[width=1\textwidth]{../Images/benchmark_1.png}
+    }
+    \caption{Prve 4 funkcije iz suite of benchmarks.}
+    \label{fig:benchmarks}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \makebox[\textwidth][c]{%
+    \includegraphics[width=1\textwidth]{../Images/benchmark_2.png}
+    }
+    \caption{Naslednje 4 funkcije iz suite of benchmarks.}
+    \label{fig:benchmarks2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \makebox[\textwidth][c]{%
+    \includegraphics[width=1\textwidth]{../Images/benchmark_3.png}
+    }
+    \caption{Zadnje 4 funkcije iz suite of benchmarks.}
+    \label{fig:benchmarks3}
+\end{figure}
 
 \subsection{Thomsonov problem}
 Najprej sem napisal funkcijo, ki je za dobljene kote $\theta$ in $\phi$ na enotski sferi izračunala
@@ -100,9 +142,32 @@ potencial. Pri temu sem upošteval, da imamo pravzaprav $m = n - 1$ točk, ker j
 sem postavil na severni pol. Preostale točke sem porazdelil enakomerno po ekvatorju. Pogledal sem si
 natančnost različnih metod, ki jih nudi \texttt{scipy.optimize.minimize()} pri $m=1$, kajti to je edini
 primer za katerega sem se počutil samozavestno, da poznam analitičen odgovor. To pomeni, da sta dva naboja 
-na krogli, kar pomeni, da gre ne fiksirani naboj v drug pol. \\
+na krogli, kar pomeni, da gre ne fiksirani naboj v drug pol. Nato sem si pogledal še nekaj primerov 
+in naredil animacijo za $m=9$. \\
 
+\subsection{Vožnja skozi semafor}
+Najprej sem napisal funkcijo $f(v_0,\>v_1,\>v_2,\>...,\>v_n)$ po trapeznem pravilu, definirano takole:
 
+\begin{equation}
+        f =
+        \frac{1}{2} \left(\frac{v_1 - v_0}{\Delta t}\right)^2 + \left(\frac{v_2 - v_1}{\Delta t}\right)^2
+        + ... + \left(\frac{v_{n-1} - v_{n-2}}{\Delta t}\right)^2 + \frac{1}{2} \left(\frac{v_n - v_{n-1}}{\Delta t}\right)^2\>,    
+\end{equation}
+
+kjer je $v_0$ začetna hitrost, $v_n$ končna hitrost, $v_i$ hitrost v $i$-tem trenutku, $\Delta t$ pa časovni korak.
+Tej funkciji sem še prištel vez s katero sem zahteval, da je ploščina pod grafo enaka $l$, kjer je $l$ razdalja 
+do semaforja. Vez $g(v_0,\>v_1,\>v_2,\>...,\>v_n)$ je definirana takole:
+
+\begin{equation}
+    g = 1 + \exp\left[\kappa\left(\frac{1}{2}v_0 + v_1 + ... + v_{n-1} + \frac{1}{2}v_n - 
+    \frac{l}{\Delta t}\right)\right]\>.
+\end{equation}
+
+Skupno funkcijo sem minimiziral z metodami za lokalno optimizacijo, ki jih ponuja \texttt{scipy.optimize.minimize()}.
+Ker sem imel od prvega dela naloge največ uspega z \texttt{Powell} metodo, sem se odločil, da jo uporabim tudi tukaj.
+Začetne pogoje sem nastavil tako, da so vse hitrosti enake in tako sem dobil neke rezultate. Bi si pa želel, da bi 
+posvetil lahko več časa temu delu naloge, ker se bi mi zdelo zanimivo primerjati bolj podrobno dobljeno z rezultati
+prve naloge pri Modelski Analizi 1. Žal je oddajni rok že tu. \\
 
 \section{Rezultati}
 

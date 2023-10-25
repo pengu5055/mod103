@@ -1,3 +1,8 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{Endres2018}
+Stefan~C. Endres, Carl Sandrock, and Walter~W. Focke.
+\newblock A simplicial homology algorithm for lipschitz optimisation.
+\newblock {\em Journal of Global Optimization}, 72(2):181--217, Oct 2018.
 
 \end{thebibliography}
