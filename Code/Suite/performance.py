@@ -15,7 +15,7 @@ from constants import *
 
 
 # --- Initialize ---
-columns = ["Method", "Start point", "Converged point", "Absolute error"]
+columns = ["Method", "Start point", "Converged point", "Relative error"]
 index = ["Function"]
 
 # Create a dataframe to store the results
@@ -27,6 +27,59 @@ for func in to_benchmark:
     name = func.__name__
     print(f"Benchmarking function: {name}")
     points = benchmark_func(func, start_points[name], boundaries[name])
+
+    # Check if the function is multi-modal
+    if name == "nonlin_himmelblau2":
+        # Take the global minimum that yields the lowest absolute error
+        possibilities = np.array([
+            (3, 2),
+            (-2.805118, 3.131312),
+            (-3.779310, -3.283186),
+            (3.584428, -1.848126),
+        ])
+
+        # Calculate the relative error for each point
+        smallest = np.inf
+        for point in possibilities:
+            himmelblau_abs_error = np.abs(points - point)
+            
+            if np.max(himmelblau_abs_error) < smallest:
+                smallest = np.max(himmelblau_abs_error)
+                optimal_points[name] = point
+        
+    elif name == "nonlin_crossintray2":
+        possibilities = np.array([
+            (1.34941, -1.34941),
+            (1.34941, 1.34941),
+            (-1.34941, 1.34941),
+            (-1.34941, -1.34941),
+        ])
+
+        smallest = np.inf
+        for point in possibilities:
+            crossintray_abs_error = np.abs(points - point)
+
+            if np.max(crossintray_abs_error) < smallest:
+                smallest = np.max(crossintray_abs_error)
+                optimal_points[name] = point
+    
+    elif name == "nonlin_schafferN42":
+        possibilities = np.array([
+            (0, 1.253131828792882),
+            (0, -1.253131828792882),
+            (1.253131828792882, 0),
+            (-1.253131828792882, 0),
+        ])
+
+        smallest = np.inf
+        for point in possibilities:
+            schaffer_abs_error = np.abs(points - point)
+
+            if np.max(schaffer_abs_error) < smallest:
+                smallest = np.max(schaffer_abs_error)
+                optimal_points[name] = point
+    
+    # --- Calculate the absolute error ---
 
     # Calculate the absolute error
     abs_error = np.abs(points - optimal_points[name])
@@ -48,7 +101,7 @@ for func in to_benchmark:
 
         data = pd.concat([data, output])
 
-data.to_hdf("Results/global_benchmarks.h5", key="Benchmarks", mode="w", complevel=9)
+data.to_hdf("Results/rel-err_benchmark.h5", key="Benchmarks", mode="w", complevel=9)
 
 print(data)
 
