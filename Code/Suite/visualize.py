@@ -7,6 +7,7 @@ import pandas as pd
 import numpy as np
 import cmasher as cmr
 from constants import *
+import palettable as pl
 
 
 # Load the results
@@ -28,7 +29,7 @@ for i, func in enumerate(to_benchmark):
 # Plot the heatmap
 fig, ax = plt.subplots()
 
-cm = cmr.get_sub_cmap("cmr.infinity_s", 0.1, 0.9)
+cm = pl.cartocolors.sequential.PurpOr_4.mpl_colormap
 
 norm = mpl.colors.SymLogNorm(10e-15, vmin=error_matrix.min() + 1e-16, vmax=error_matrix.max()/3)
 mappable = mpl.cm.ScalarMappable(norm=norm, cmap=cm)
@@ -40,7 +41,7 @@ im = ax.imshow(error_matrix, extent=[1.5, 3*len(methods) + 1.5, 0, len(to_benchm
                interpolation='none', cmap=cm, norm=norm)
 
 # Add the colorbar
-cbar = fig.colorbar(im)
+cbar = fig.colorbar(im, pad=0)
 cbar.set_label(r"Abs. error")
 
 # Add the function names
@@ -83,13 +84,13 @@ for i in range(len(to_benchmark)):
             f"{error_matrix[i, j]:.2e}",
             ha="center",
             va="center",
-            color="w",
+            color="#CCC8C3" if error_matrix[i, j] > 1e-5 else "#4B4453",
         )
 
 ax.set_title("Absolute error of the converged points")
 ax.set_aspect("equal")
 plt.axis("square")
-plt.subplots_adjust(left=0.18, bottom=0.2, right=0.98, top=0.93)
+plt.subplots_adjust(left=0.14, bottom=0.2, right=0.97, top=0.93)
 plt.show()
 
 
