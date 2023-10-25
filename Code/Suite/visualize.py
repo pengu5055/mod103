@@ -31,17 +31,19 @@ for i, func in enumerate(to_benchmark):
 # Plot the heatmap
 fig, ax = plt.subplots()
 
-norm = mpl.colors.Normalize(vmin=error_matrix.min(), vmax=error_matrix.max())
-mappable = mpl.cm.ScalarMappable(norm=norm, cmap=cmr.ember)
+cm = cmr.get_sub_cmap("cmr.infinity_s", 0.1, 0.9)
+
+norm = mpl.colors.SymLogNorm(10e-15, vmin=error_matrix.min() + 1e-16, vmax=error_matrix.max()/3)
+mappable = mpl.cm.ScalarMappable(norm=norm, cmap=cm)
 
 print(len(methods)/len(to_benchmark))
 
 # Extent set so that the heatmap is square and aligned with the plot grid
 im = ax.imshow(error_matrix, extent=[1.5, 3*len(methods) + 1.5, 0, len(to_benchmark) + 0],
-               interpolation='none', cmap=cmr.ember, norm=norm)
+               interpolation='none', cmap=cm, norm=norm)
 
 # Add the colorbar
-cbar = fig.colorbar(mappable, ax=ax)
+cbar = fig.colorbar(im)
 cbar.set_label(r"Abs. error")
 
 # Add the function names
@@ -70,7 +72,7 @@ for i in range(len(to_benchmark)):
         text = ax.text(
             # Corrections for grid alignment and for center justification
             3*j + 1.5 + 1.5,
-            i + 0.5,
+            11 - i + 0.5,
             f"{error_matrix[i, j]:.2e}",
             ha="center",
             va="center",
