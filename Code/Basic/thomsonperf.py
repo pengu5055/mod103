@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from scipy.optimize import minimize
 from src import *
 import cmasher as cmr
+import palettable as pl
 
 # --- Initialize ---
 methods = [
@@ -42,6 +43,7 @@ for method in methods:
 
 results = np.array(results)
 
+# This only applies for m = 1
 abs_err_x = np.abs(0 - results[:, 0] / np.pi)
 abs_err_y = np.abs(1 - results[:, 1] / np.pi)
 
@@ -55,24 +57,29 @@ for err_x, err_y in zip(abs_err_x, abs_err_y):
 fig, ax = plt.subplots()
 
 # Create bar chart
+cm = pl.cartocolors.sequential.PurpOr_4.mpl_colormap
+colors = cmr.take_cmap_colors(cm, len(methods), return_fmt="hex", cmap_range=(0.2, 0.8))
 
-colors = cmr.take_cmap_colors("cmr.fusion", len(methods), return_fmt="hex", cmap_range=(0.2, 0.8))
-
-ax.bar(
+ax.barh(
     methods,
     max_abs_err,
     color=colors,
 )
 
+# Set bar labels
+ax.bar_label(ax.containers[0], fmt="%.2e",
+             padding=2, color="#4B4453", fontsize=12)
+
+
+# Set y ticks to method names
+ax.set_yticklabels(methods)
+
+ax.set_title("Absolute error of the 2 charge Thomson problem")
 ax.set_ylabel("Abs. error")
 ax.set_xlabel("Method")
-
-# Set y axis to log scale
-ax.set_yscale("log")
-
-# Set x ticks to method names
-ax.set_xticklabels(methods)
-
+ax.set_xlim(1e-12, 1e-1)
+ax.set_xscale("log")
+plt.subplots_adjust(left=0.22)
 plt.show()
 
 
