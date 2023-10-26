@@ -226,9 +226,61 @@ Pričakoval bi, da bi bila metoda BFGS najbolj natančna zaradi tega, ker je to 
 izkazalo se je, da je za ta dotični primer najbolj natančna metoda Powell in to za 4 rede velikosti. Upam,
 da nisem česa napačno napisal, ker se mi to zdi nekoliko nenavadno. \\
 
-Vizualno je rešitev tega problama 
+Vizualno je rešitev tega problema za nekaj različnih $m$ prikazana na sliki (\ref{fig:thomson}). \\
+
+\begin{figure}[H]
+    \centering
+    \makebox[\textwidth][c]{%
+    \includegraphics[width=1\textwidth]{../Images/thomson_multi.png}
+    }
+    \caption{Rešitev Thomsonovega problema za različne $m$.}
+    \label{fig:thomson}
+\end{figure}
+
+\subsection{Vožnja skozi semafor}
+Rezultati optimizacije za različne vrednosti $\kappa$ so prikazani na sliki (\ref{fig:semafor_results}). Pri vseh
+rešitvah pride na koncu do neke vrste potujitve česar ne znam najbolje razložiti.
+
+\begin{figure}[H]
+    \centering
+    \makebox[\textwidth][c]{%
+    \includegraphics[width=1\textwidth]{../Images/stoplight_sweep_kappa.png}
+    }
+    \caption{Rezultati optimizacije za različne $\kappa$.}
+    \label{fig:semafor_results}
+\end{figure}
+
+Veliko bolj praktično bi bilo, če bi jaz ta graf narisal v pravilni brezdimenzijski obliki, ampak žal nisem
+utegnil. Tako je zdaj iz te slike težko razbrati, kaj se pravzaprav dogaja in s tem tudi težko primerjam 
+dobljeno z rezultati prve naloge pri Modelski Analizi 1. Kot tisti drugi nov parameter od katerega so lahko 
+različne rešitve sem pogledal še, kaj se spremeni ob spremembi $\Delta t$. Rezultat je prikazan na sliki 
+(\ref{fig:semafor_results2}). \\
+
+\begin{figure}[H]
+    \centering
+    \makebox[\textwidth][c]{%
+    \includegraphics[width=1\textwidth]{../Images/stoplight_sweep_step.png}
+    }
+    \caption{Rezultati optimizacije za različne $\Delta t$.}
+    \label{fig:semafor_results2}
+\end{figure}
+
+Začetna hitrost je bila tu nastavljena na $v_0 = 5$ in smiselno, če časovnega koraka ni, se nič ne spremeni. Večji 
+časovni korak nam povzroči večjo spremembo hitrosti, kar pa ni vedno optimalno, ker se lahko zgodi, da postane 
+hitrost negativna. To bi sicer lahko poskusil mitigirati z dodatnimi vezmi, ampak sem res želel ujeti oddajni rok in
+zaradi tega sem to izpustil.
 
 \section{Komentarji in izboljšave}
+Malo sem nezadovoljen z izidom naloge, ker sem želel narediti še več, ampak žal nisem utegnil. Želel sem narediti
+še več primerjav metod, še predvsem uporabo regresijskih modelov za napovedovanje optimalnih parametrov. Pravzaprav 
+sem imel cel spisek stvari, ki sem jih želel narediti.. še paralelni grid search, uporaba komercialnih solverjev kot
+je \texttt{gurobipy}. Na koncu mi je vse malo propadlo. Želel sem aplicirati vse to na praktičnem primeru minimizacije
+višine terena Slovenije. It is what it is. \\
+
+Najbolj se mi zdi lacking drug del naloge, kjer bi si res želel pogledati še kako vez. Morebitno kdaj dodam k tej 
+nalogi še kakšen dodatek okoli tega dela, ker se mi zdi, da sem malenkost malo raziskal to področje. Je pa bilo zabavno
+testirati različne metode optimizacije na različnih funkcijah. Verjetno bi si moral boljše razporediti čas, da bi lahko
+naredil več. \\
 
 \newpage
 \bibliographystyle{unsrt}

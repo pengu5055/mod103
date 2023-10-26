@@ -10,5 +10,6 @@
 \contentsline {section}{\numberline {4}Rezultati}{7}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Suite of benchmarks}{7}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Thomsonov problem}{8}{subsection.4.2}%
-\contentsline {section}{\numberline {5}Komentarji in izboljšave}{9}{section.5}%
-\contentsline {section}{Literatura}{10}{section*.8}%
+\contentsline {subsection}{\numberline {4.3}Vožnja skozi semafor}{10}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Komentarji in izboljšave}{12}{section.5}%
+\contentsline {section}{Literatura}{13}{section*.11}%

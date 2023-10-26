@@ -1,20 +1,23 @@
 # Fdb version 4
-["bibtex main"] 0 "main.aux" "main.bbl" "main" 1698305581 -1
+["bibtex main"] 1698307787 "main.aux" "main.bbl" "main" 1698308299 0
   "./sources.bib" 1698276900 2230 b81603664aa5095cfbb09cc8bae1d224 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/unsrt.bst" 1684972800 18030 1376b4b231b50c66211e47e42eda2875 ""
-  "main.aux" 1698305581 3988 1fb6d0779c825468bb2eb2593f20c8d9 "pdflatex"
+  "main.aux" 1698308298 4984 cdc83cc0c808576e47c5ef547dc833fa "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1698305580 "/home/pengu5055/Documents/FMF/Year1/MA1/mod103/Latex/main.tex" "main.pdf" "main" 1698305581 0
+["pdflatex"] 1698308297 "/home/pengu5055/Documents/FMF/Year1/MA1/mod103/Latex/main.tex" "main.pdf" "main" 1698308299 0
   "../Images/benchmark_1.png" 1698273782 941349 c4b892b79148a167b56476ecd5cdccae ""
   "../Images/benchmark_2.png" 1698274505 966923 c808ff89f3ee52c08a6bfd424972cea3 ""
   "../Images/benchmark_3.png" 1698277703 1313213 a4a7ca033e6130986f7808bdda67125b ""
   "../Images/error_heatmap_v4.png" 1698277993 124621 bfe006c54b9a9b4ce9fff876185b6a43 ""
   "../Images/stoplight_lagrangian_bare.png" 1698269035 159357 a5645ada69013f63e20e260034e8afe9 ""
+  "../Images/stoplight_sweep_kappa.png" 1698267723 75335 cd817a1c373b6d03809966944b30f754 ""
+  "../Images/stoplight_sweep_step.png" 1698270637 75282 69de1e11fa0e4af1901c28c14a807e48 ""
+  "../Images/thomson_multi.png" 1698307361 547303 ec34d4619d11cdd479cfc2e824a6d743 ""
   "../Images/thomson_perf1.png" 1698253267 25123 89fc730c8c79b6899e8e0c507cdc7255 ""
-  "/home/pengu5055/Documents/FMF/Year1/MA1/mod103/Latex/main.tex" 1698305580 10777 0145d99eb803fd5eaab4aa0377f6c1ed ""
+  "/home/pengu5055/Documents/FMF/Year1/MA1/mod103/Latex/main.tex" 1698308297 13587 5cc7dd59f78d264f23a35284b2d40b5c ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -111,11 +114,11 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1697067503 4603192 0eff5d941e341e7e38e369b967619829 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1698184798 7863017 0e78b0df0d83ada11ff4dea35803c082 ""
   "logo.png" 1697060406 8303 7b15c7eec596b95d22d9e8d01528be9a ""
-  "main.aux" 1698305581 3988 1fb6d0779c825468bb2eb2593f20c8d9 "pdflatex"
-  "main.bbl" 1698305204 270 d42f5d803b2d312082e0bcc0b0f20791 "bibtex main"
-  "main.out" 1698305581 1696 6f86636ef26d0f454c7134db907793ea "pdflatex"
-  "main.tex" 1698305580 10777 0145d99eb803fd5eaab4aa0377f6c1ed ""
-  "main.toc" 1698305581 1015 bd593322714b49da6a8f243972a572fb "pdflatex"
+  "main.aux" 1698308298 4984 cdc83cc0c808576e47c5ef547dc833fa "pdflatex"
+  "main.bbl" 1698307787 270 d42f5d803b2d312082e0bcc0b0f20791 "bibtex main"
+  "main.out" 1698308298 1864 4698f80e1efeb65a86bf7f69d8e491c3 "pdflatex"
+  "main.tex" 1698308297 13587 5cc7dd59f78d264f23a35284b2d40b5c ""
+  "main.toc" 1698308298 1105 3efbe906bff8131760e7b5092329d6e5 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

@@ -15,7 +15,7 @@ from src import *
 # --- Initialize ---
 # Minimize the function for a given number of additional points m
 # By default one charge is always placed at the north pole
-m = 9
+m = 199
 n = 50
 
 # Give the rest random starting points
@@ -49,7 +49,7 @@ theta_arr = res.x[m:]
 
 
 # --- Plotting ---
-if False:
+if True:
     fig, ax = plot_unit_sphere(n)
 
     x, y, z = sphere2cart(phi_arr, theta_arr)
@@ -92,7 +92,7 @@ if False:
     plt.show()
 
 # --- Multiplot ---
-if True:
+if False:
     fig = plt.figure(figsize=(10, 10))
 
     ms = [3, 5, 7, 9]
