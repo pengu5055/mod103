@@ -197,7 +197,36 @@ rezultati od pravih vrednosti. Rezultat je prikazan na sliki (\ref{fig:benchmark
 Vidimo, da je od vseh funkcij najbolj zoprna Eggholderjeva funkcija. Če pogledamo še na sliki (\ref{fig:benchmarks2})
 vidimo, da tudi res zgleda tako. Meni se sploh ne zdi očiten tisti minimum. Pa še tako nazobčeno je vse skupaj, kar 
 pomeni, da se je zelo težko znebiti lokalnih minimumov. Najlažje je pa optimizirati Sferično simetrično funkcijo,
-kar je tudi zelo smiselno. V splošnem zgleda najbolj uspešna metoda kar Basin Hopping
+kar je tudi zelo smiselno. V splošnem zgleda najbolj uspešna metoda kar Basin Hopping, kar se mi zdi zanimivo, da
+je tako uspešna, ker v bistvu deluje na principu naključnih perturbacij. \\
+
+\subsection{Thomsonov problem}
+Verjetno najbolj zanimiv rezultat pri študiji Thomsonovega problema je slika (\ref{fig:thomson_benchmark}) kjer sem 
+primerjal različne metode optimizacije. 
+
+\begin{figure}[H]
+    \centering
+    \makebox[\textwidth][c]{%
+    \includegraphics[width=1\textwidth]{../Images/thomson_perf1.png}
+    }
+    \caption{Rezultati optimizacije Thomsonovega problema za $m=1$.}
+    \label{fig:thomson_benchmark}
+\end{figure}
+
+Uporabljene metode so:
+
+\begin{itemize}
+    \item BFGS - Broyden–Fletcher–Goldfarb–Shanno algorithm
+    \item CG - Conjugate Gradient algorithm
+    \item Powell - Powell’s conjugate direction method
+    \item Nelder-Mead - Nelder-Mead simplex algorithm
+\end{itemize}
+
+Pričakoval bi, da bi bila metoda BFGS najbolj natančna zaradi tega, ker je to metoda drugega reda, ampak
+izkazalo se je, da je za ta dotični primer najbolj natančna metoda Powell in to za 4 rede velikosti. Upam,
+da nisem česa napačno napisal, ker se mi to zdi nekoliko nenavadno. \\
+
+Vizualno je rešitev tega problama 
 
 \section{Komentarji in izboljšave}
 
