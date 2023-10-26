@@ -167,13 +167,37 @@ Skupno funkcijo sem minimiziral z metodami za lokalno optimizacijo, ki jih ponuj
 Ker sem imel od prvega dela naloge največ uspega z \texttt{Powell} metodo, sem se odločil, da jo uporabim tudi tukaj.
 Začetne pogoje sem nastavil tako, da so vse hitrosti enake in tako sem dobil neke rezultate. Bi si pa želel, da bi 
 posvetil lahko več časa temu delu naloge, ker se bi mi zdelo zanimivo primerjati bolj podrobno dobljeno z rezultati
-prve naloge pri Modelski Analizi 1. Žal je oddajni rok že tu. \\
+prve naloge pri Modelski Analizi 1. Žal je oddajni rok že tu. Lahko si pa pogledamo s kakšno funkcijo imamo opravka.
+Na sliki (\ref{fig:semafor}) je prikazana funkcija, ki jo minimiziramo. \\
+
+\begin{figure}[H]
+    \centering
+    \makebox[\textwidth][c]{%
+    \includegraphics[width=0.8\textwidth]{../Images/stoplight_lagrangian_bare.png}
+    }
+    \caption{Funkcija, ki jo minimiziramo.}
+    \label{fig:semafor}
+\end{figure}
 
 \section{Rezultati}
 \subsection{Suite of benchmarks}
 Kot sem že omenil, sem za primerjavo uspešnosti različnih metod globalne optimizacije definiral suito funkcij, ki so
 posebej patološke oz. primerne za testiranje kvalitete optimizacijskih metod. Nato sem si pogledal, za koliko odstopajo
-rezultati od pravih vrednosti. 
+rezultati od pravih vrednosti. Rezultat je prikazan na sliki (\ref{fig:benchmarks_results}). \\
+
+\begin{figure}[H]
+    \centering
+    \makebox[\textwidth][c]{%
+    \includegraphics[width=1.2\textwidth]{../Images/error_heatmap_v4.png}
+    }
+    \caption{Rezultati optimizacije funkcij iz suite of benchmarks.}
+    \label{fig:benchmarks_results}
+\end{figure}
+
+Vidimo, da je od vseh funkcij najbolj zoprna Eggholderjeva funkcija. Če pogledamo še na sliki (\ref{fig:benchmarks2})
+vidimo, da tudi res zgleda tako. Meni se sploh ne zdi očiten tisti minimum. Pa še tako nazobčeno je vse skupaj, kar 
+pomeni, da se je zelo težko znebiti lokalnih minimumov. Najlažje je pa optimizirati Sferično simetrično funkcijo,
+kar je tudi zelo smiselno. V splošnem zgleda najbolj uspešna metoda kar Basin Hopping
 
 \section{Komentarji in izboljšave}
 
