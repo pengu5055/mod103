@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/CVE-2023-32700 patched) (preloaded format=pdflatex 2023.10.24)  26 OCT 2023 10:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/CVE-2023-32700 patched) (preloaded format=pdflatex 2023.10.24)  26 OCT 2023 10:21
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -440,100 +440,100 @@ Underfull \hbox (badness 10000) in paragraph at lines 101--107
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--111
+Underfull \hbox (badness 10000) in paragraph at lines 108--112
 
  []
 
 <../Images/benchmark_1.png, id=99, 722.7pt x 722.7pt>
 File: ../Images/benchmark_1.png Graphic file (type png)
 <use ../Images/benchmark_1.png>
-Package pdftex.def Info: ../Images/benchmark_1.png  used on input line 116.
+Package pdftex.def Info: ../Images/benchmark_1.png  used on input line 117.
 (pdftex.def)             Requested size: 345.0pt x 344.99533pt.
 [3]
 <../Images/benchmark_2.png, id=110, 722.7pt x 722.7pt>
 File: ../Images/benchmark_2.png Graphic file (type png)
 <use ../Images/benchmark_2.png>
-Package pdftex.def Info: ../Images/benchmark_2.png  used on input line 125.
+Package pdftex.def Info: ../Images/benchmark_2.png  used on input line 126.
 (pdftex.def)             Requested size: 345.0pt x 344.99533pt.
  [4 <../Images/benchmark_1.png>]
 <../Images/benchmark_3.png, id=116, 722.7pt x 722.7pt>
 File: ../Images/benchmark_3.png Graphic file (type png)
 <use ../Images/benchmark_3.png>
-Package pdftex.def Info: ../Images/benchmark_3.png  used on input line 134.
+Package pdftex.def Info: ../Images/benchmark_3.png  used on input line 135.
 (pdftex.def)             Requested size: 345.0pt x 344.99533pt.
  [5 <../Images/benchmark_2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 140--147
+Underfull \hbox (badness 10000) in paragraph at lines 141--148
 
  []
 
 [6 <../Images/benchmark_3.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 166--172
+Underfull \hbox (badness 10000) in paragraph at lines 167--173
 
  []
 
 <../Images/stoplight_lagrangian_bare.png, id=133, 462.528pt x 346.896pt>
 File: ../Images/stoplight_lagrangian_bare.png Graphic file (type png)
 <use ../Images/stoplight_lagrangian_bare.png>
-Package pdftex.def Info: ../Images/stoplight_lagrangian_bare.png  used on input line 177.
+Package pdftex.def Info: ../Images/stoplight_lagrangian_bare.png  used on input line 178.
 (pdftex.def)             Requested size: 276.00105pt x 207.01175pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--187
+Underfull \hbox (badness 10000) in paragraph at lines 185--188
 
  []
 
 <../Images/error_heatmap_v4.png, id=135, 462.528pt x 346.896pt>
 File: ../Images/error_heatmap_v4.png Graphic file (type png)
 <use ../Images/error_heatmap_v4.png>
-Package pdftex.def Info: ../Images/error_heatmap_v4.png  used on input line 192.
+Package pdftex.def Info: ../Images/error_heatmap_v4.png  used on input line 193.
 (pdftex.def)             Requested size: 413.99895pt x 310.51497pt.
 [7 <../Images/stoplight_lagrangian_bare.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 197--202
+Underfull \hbox (badness 10000) in paragraph at lines 198--203
 
  []
 
 <../Images/thomson_perf1.png, id=148, 462.528pt x 346.896pt>
 File: ../Images/thomson_perf1.png Graphic file (type png)
 <use ../Images/thomson_perf1.png>
-Package pdftex.def Info: ../Images/thomson_perf1.png  used on input line 211.
+Package pdftex.def Info: ../Images/thomson_perf1.png  used on input line 212.
 (pdftex.def)             Requested size: 345.0pt x 258.76335pt.
 [8 <../Images/error_heatmap_v4.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 225--228
+Underfull \hbox (badness 10000) in paragraph at lines 226--229
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 229--230
+Underfull \hbox (badness 10000) in paragraph at lines 230--231
 
  []
 
 <../Images/thomson_multi.png, id=157, 722.7pt x 722.7pt>
 File: ../Images/thomson_multi.png Graphic file (type png)
 <use ../Images/thomson_multi.png>
-Package pdftex.def Info: ../Images/thomson_multi.png  used on input line 235.
+Package pdftex.def Info: ../Images/thomson_multi.png  used on input line 236.
 (pdftex.def)             Requested size: 345.0pt x 344.99533pt.
 [9 <../Images/thomson_perf1.png>]
 <../Images/stoplight_sweep_kappa.png, id=166, 462.528pt x 346.896pt>
 File: ../Images/stoplight_sweep_kappa.png Graphic file (type png)
 <use ../Images/stoplight_sweep_kappa.png>
-Package pdftex.def Info: ../Images/stoplight_sweep_kappa.png  used on input line 248.
+Package pdftex.def Info: ../Images/stoplight_sweep_kappa.png  used on input line 249.
 (pdftex.def)             Requested size: 345.0pt x 258.76335pt.
  [10 <../Images/thomson_multi.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 253--258
+Underfull \hbox (badness 10000) in paragraph at lines 254--259
 
  []
 
 <../Images/stoplight_sweep_step.png, id=174, 462.528pt x 346.896pt>
 File: ../Images/stoplight_sweep_step.png Graphic file (type png)
 <use ../Images/stoplight_sweep_step.png>
-Package pdftex.def Info: ../Images/stoplight_sweep_step.png  used on input line 263.
+Package pdftex.def Info: ../Images/stoplight_sweep_step.png  used on input line 264.
 (pdftex.def)             Requested size: 345.0pt x 258.76335pt.
 [11 <../Images/stoplight_sweep_kappa.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 274--279
+Underfull \hbox (badness 10000) in paragraph at lines 275--280
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 280--284
+Underfull \hbox (badness 10000) in paragraph at lines 281--285
 
  []
 
@@ -550,7 +550,7 @@ Here is how much of TeX's memory you used:
  1137 hyphenation exceptions out of 8191
  72i,7n,77p,313b,914s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on main.pdf (14 pages, 3500304 bytes).
+Output written on main.pdf (14 pages, 3500341 bytes).
 PDF statistics:
  260 PDF objects out of 1000 (max. 8388607)
  195 compressed objects within 2 object streams
